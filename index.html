@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>اسمك في مصر القديمة · Your Name in Ancient Egypt</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Noto+Naskh+Arabic:wght@500;700&family=Noto+Sans+Coptic&family=Noto+Sans+Egyptian+Hieroglyphs&display=swap">
+<meta name="description" content="اكتب اسمك واحصل على كتابته بالهيروغليفية والقبطية والعربية والإنجليزية، جاهزة للتحميل والطباعة والمشاركة. Your name in hieroglyphs and Coptic.">
+<meta property="og:title" content="اسمك في مصر القديمة · Your Name in Ancient Egypt">
+<meta property="og:description" content="Hieroglyphs, Coptic, Arabic and English cards for any name. هيروغليفية وقبطية لأي اسم.">
+<meta property="og:type" content="website"><meta name="twitter:card" content="summary">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--bg:#e6eae8;--fg:#1d2a33;--mut:#5a6872;--lap:#1f4e8c;--ink:#2b2118;--pap1:#ecd9a6;--pap2:#d6b977;--ln:#b9c3c3;--in:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121c26;--fg:#e8eef2;--mut:#9fb0bb;--lap:#7fb0ee;--ln:#2c3d4b;--in:#1b2834}}
+:root[data-theme="dark"]{--bg:#121c26;--fg:#e8eef2;--mut:#9fb0bb;--lap:#7fb0ee;--ln:#2c3d4b;--in:#1b2834}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Noto Naskh Arabic",Tahoma,sans-serif}
+body[data-l=en]{font-family:Georgia,"Times New Roman",serif}
+main{max-width:620px;margin:0 auto;padding:18px 14px 40px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+h1{font:700 1.5rem/1.25 "Noto Naskh Arabic",serif;margin:0}
+body[data-l=en] h1{font-family:Cinzel,Georgia,serif;font-size:1.3rem;letter-spacing:.02em}
+.sub{color:var(--mut);margin:.3rem 0 1rem}
+button,select,input{font:inherit;color:inherit}
+.lg{border:1px solid var(--ln);background:var(--in);border-radius:8px;padding:4px 12px;cursor:pointer;min-height:36px}
+#n,#n2{width:100%;padding:14px;font-size:1.3rem;border:2px solid var(--lap);border-radius:10px;background:var(--in)}
+#n2{margin-top:8px}
+.inp{display:flex;gap:8px;align-items:stretch}
+.inp #n{flex:1;min-width:0;width:auto}
+.mic{min-width:56px;border:2px solid var(--lap);border-radius:10px;background:var(--in);cursor:pointer;padding:0 12px;font-size:1rem}
+.mic.on{background:var(--lap);color:#fff}
+.vrow{margin:.5rem 0 0}
+.cr{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.cr input{width:100%;min-width:0;padding:8px 10px;border:1px solid var(--ln);border-radius:8px;background:var(--in);font-size:1.05rem}
+.cr small{grid-column:1/-1;color:var(--mut)}
+.dlo label{display:block;margin:7px 0}.dlo select,.vrow select,#bg{border:1px solid var(--ln);border-radius:8px;background:var(--in);padding:4px 8px;margin:0 6px}
+.hint{color:var(--mut);font-size:.9rem;margin:.4rem 0 1rem}
+fieldset{border:1px solid var(--ln);border-radius:10px;margin:0 0 12px;padding:8px 12px}
+legend{padding:0 6px;color:var(--mut);font-size:.9rem}
+label{display:inline-flex;align-items:center;gap:6px;margin:3px 12px 3px 0;cursor:pointer}
+body[dir=ltr] label{margin:3px 12px 3px 0}
+input[type=checkbox],input[type=radio]{accent-color:var(--lap);width:18px;height:18px}
+:focus-visible{outline:3px solid var(--lap);outline-offset:2px}
+.card{margin:14px 0;padding:16px;border-radius:12px;color:var(--ink);border:1px solid #a98b4a;
+background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 .015' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .3 0 0 0 0 .12 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23f)'/%3E%3C/svg%3E"),linear-gradient(135deg,var(--pap1),var(--pap2))}
+.card h2{font-size:.9rem;margin:0 0 8px;color:#6b5420;font-weight:700}
+.line{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:flex-start}
+.w{display:inline-flex;gap:2px;padding:2px 6px}
+.w.cart{border:2px solid var(--ink);border-radius:26px;padding:6px 16px}
+main[data-bg=g] .card{background:linear-gradient(135deg,#f6dc82,#b98a1e 55%,#ecd070);border-color:#8a6a14}
+main[data-bg=s] .card{background:linear-gradient(135deg,#f4f6f8,#a9b2bb 55%,#e1e5e9);border-color:#7b8590;color:#1f2933}
+main[data-bg=l] .card{background:linear-gradient(135deg,#1c3f87,#0d2457 60%,#2a5db0);border-color:#c9a94e;color:#f3e7b0}
+main[data-bg=g] .card h2{color:#5a4210}main[data-bg=s] .card h2{color:#4a5560}main[data-bg=l] .card h2{color:#d8c37a}
+main[data-bg=l] .w.cart,main[data-bg=x] .w.cart{border-color:#e7d38a}
+main[data-bg=x] .card{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),var(--cbg) center/cover;border-color:#c9a94e;color:#f6efd9}main[data-bg=x] .card h2{color:#d8c37a}
+.img label{display:block;margin:7px 0}.img input[type=file]{max-width:100%}
+.hg{font-family:"Noto Sans Egyptian Hieroglyphs","Segoe UI Historic","Apple Symbols",sans-serif;font-size:2.4rem;line-height:1.25}
+.hg i{font-style:normal;display:inline-block}
+.hg.m i{transform:scaleX(-1)}
+.line.v{flex-wrap:nowrap;overflow-x:auto}
+.line.v .w{flex-direction:column;align-items:center}
+.cp{font-family:"Noto Sans Coptic","Antinoou","Segoe UI Historic",serif;font-size:2rem;line-height:1.4}
+.en{font:600 1.8rem/1.4 Cinzel,Georgia,serif}
+.ar{font:700 2rem/1.6 "Noto Naskh Arabic",serif}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0}
+.bar button{flex:1;min-height:46px;border:0;border-radius:10px;background:var(--lap);color:#fff;font-weight:700;cursor:pointer}
+body[data-th=dark] .bar button{color:#10202f}
+.bar button:disabled{opacity:.45;cursor:default}
+.note{color:var(--mut);font-size:.85rem;margin-top:14px}
+.empty{color:var(--mut);text-align:center;padding:26px 0}
+</style>
+</head>
+<body data-l="ar">
+<main>
+<header>
+ <div><h1 id="t"></h1><p class="sub" id="s"></p></div>
+ <button class="lg" id="lg" type="button"></button>
+</header>
+<div class="inp"><input id="n" type="text" maxlength="60" autocomplete="off" spellcheck="false"><button id="mic" class="mic" type="button" aria-pressed="false"></button></div>
+<input id="n2" type="text" maxlength="60" autocomplete="off" spellcheck="false" hidden>
+<div class="vrow"><label><span id="vlab"></span><select id="vl"><option value="ar-EG">العربية · مصر</option><option value="ar-SA">العربية · الخليج</option><option value="en-US">English</option></select></label></div>
+<p class="hint" id="vs" role="status" aria-live="polite"></p>
+<p class="hint" id="h"></p>
+<fieldset><legend id="lo"></legend><span id="outs"></span></fieldset>
+<fieldset><legend id="ld"></legend>
+ <label><input type="radio" name="d" value="h"><span id="dh"></span></label>
+ <label><input type="radio" name="d" value="v"><span id="dv"></span></label><br>
+ <label><input type="checkbox" id="cart"><span id="lc"></span></label>
+ <label><input type="checkbox" id="mir"><span id="lm"></span></label><br><label><input type="checkbox" id="dc"><span id="ldc"></span></label><br><label><input type="checkbox" id="du"><span id="ldu"></span></label><br><label><span id="lbg"></span><select id="bg"><option value="p"></option><option value="g"></option><option value="s"></option><option value="l"></option></select></label>
+</fieldset>
+<div id="cr"></div>
+<div id="res"></div>
+<fieldset class="img"><legend id="lim"></legend><label><span id="lbf"></span> <input type="file" id="bf" accept="image/*"></label><label><span id="lpf"></span> <input type="file" id="pf" accept="image/*"></label><button class="lg" id="bc" type="button"></button> <small id="is" role="status"></small></fieldset>
+<fieldset class="dlo"><legend id="ldl"></legend><label><span id="lfm"></span><select id="fm"></select></label><label><span id="lsz"></span><select id="sz"></select></label><label><span id="lsy"></span><select id="sy"></select></label><label><input type="checkbox" id="sl"><span id="lsl"></span></label><label><input type="checkbox" id="qr"><span id="lqr"></span></label></fieldset>
+<div class="bar"><button id="pv" type="button"></button><button id="ls" type="button"></button><button id="dl" type="button"></button><button id="sh" type="button"></button></div>
+<div class="bar"><button id="zp" type="button"></button></div>
+<p class="note"><button class="lg" id="an" type="button"></button> <button class="lg" id="rs" type="button"></button></p>
+<p class="note" id="nt"></p>
+<p class="note" id="pv"></p>
+<div id="pm" hidden role="dialog" aria-modal="true" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.8);padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));overflow:auto"><div style="max-width:760px;margin:0 auto;background:var(--bg);color:var(--fg);border-radius:12px;padding:14px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><strong id="pt"></strong><button class="lg" id="pcl" type="button" aria-label="Close">✕</button></div><img id="pi" alt="" style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px"><div class="bar"><button id="pd" type="button"></button><button id="ps" type="button"></button></div></div></div>
+</main>
+<script>
+(function(){
+var PAL={p:['#ecd9a6','#d6b977','#2b2118','#6b5420','rgba(107,84,32,.12)'],g:['#f6dc82','#b98a1e','#2b2118','#5a4210','rgba(90,66,16,.15)'],s:['#f4f6f8','#a9b2bb','#1f2933','#4a5560','rgba(74,85,96,.15)'],l:['#1c3f87','#0d2457','#f3e7b0','#d8c37a','rgba(216,195,122,.12)']};
+var BR='اسمك في مصر القديمة · Names of Egypt';
+var TX={ar:{t:'اسمك في مصر القديمة',s:'هيروغليفية وقبطية وإنجليزية وعربية، لكل كلمة في الاسم.',ph:'اكتب الاسم بالعربية أو الإنجليزية',
+h:'للأسماء المركّبة اكتب الاسم الكامل (مثل: مينا محسن إبراهيم). للدقة في القبطية اكتب الاسم مشكولاً أو بحروف لاتينية.',lo:'عرض النتائج',
+o:{h:'الهيروغليفية',c:'القبطية',e:'الإنجليزية',a:'العربية'},ld:'الشكل',dh:'أفقي',dv:'رأسي',lc:'إطار الخرطوش',lm:'القراءة من اليسار',
+dl:'تحميل صورة',sh:'مشاركة',mic:'تسجيل صوتي',ck:'تأكيد الاسم وتصحيحه',ckh:'الخانتان تعرضان قراءتنا لكل كلمة. صحّح العربية أو الإنجليزية وستتحدّث النتائج.',gs:'تقديري، يُراجع',ok:'صيغة معتمدة',mine:'كتابتك أنت',ldc:'استخدم الصيغ الكنسية المعتمدة للأسماء المعروفة',lbg:'الخلفية',bgp:'بردي',bgg:'ذهبي',bgs:'فضي',bgl:'لازوردي',ldl:'خيارات التحميل',lsl:'كل الأسماء في سطر واحد',zp:'تحميل حزمة ZIP (4 مقاسات)',rs:'استعادة الإعدادات الافتراضية',an:'اعمل بطاقة لصاحبك',pv:'معاينة',pt:'معاينة البطاقة',pwait:'جارٍ التحضير…',lim:'صور اختيارية (تبقى على جهازك ولا تُرفع)',lbf:'خلفية من صورتك:',lpf:'صورة شخصية (يفضّل PNG شفاف):',bcl:'مسح الصور',big:'الصورة كبيرة (أكثر من 8MB)',bad:'تعذّر فتح الصورة',lqr:'رمز QR للموقع في ركن الصورة',ldu:'بطاقة مزدوجة (اسمان)',ph2:'الاسم الثاني',lfm:'الصيغة',lsz:'المقاس',lsy:'شكل البطاقة',
+fm:[['png','PNG'],['pngt','PNG شفاف بلا خلفية'],['jpg','JPG'],['pdf','PDF للطباعة']],
+sz:[['auto','تلقائي حسب المحتوى'],['sq','مربع للسوشيال 1080×1080'],['st','ستوري 1080×1920'],['c57','بطاقة معايدة 13×18 سم'],['a5','A5'],['a4','A4 غلاف أو بوستر'],['bc','كارت شخصي 9×5 سم'],['pl','خرطوشة أو ميدالية 5×10 سم'],['plh','خرطوشة أفقية 10×5 سم'],['bn','بانر عريض 3:1']],
+sy:[['c','كلاسيكي بعناوين'],['n','نظيف بلا عناوين'],['o','هيروغليفي فقط'],['f','مؤطَّر مزدوج']],vl:'لغة الصوت',lis:'جارٍ الاستماع… انطق الاسم ثم توقف.',done:'تمت الكتابة. عدّل الاسم في الخانة إن لزم.',ns:'متصفحك لا يدعم التعرف على الصوت. جرّب Chrome أو Safari.',den:'المتصفح لا يسمح بالميكروفون. فعّله من إعدادات الموقع.',err:'لم نسمع بوضوح. حاول مرة أخرى.',ls:'استمع للنطق',pv:'التعرف على الصوت تتولاه خدمة المتصفح وقد يُرسل التسجيل إلى خوادمها. نحن لا نخزّن أي صوت.',em:'اكتب اسمك لتظهر النتيجة.',lg:'English',
+nt:'نقل صوتي تقريبي وليس ترجمة رسمية. الحروف المفخمة والحلقية (ص ض ط ظ ع ح) لها أقرب مقابل فقط، والأسماء الكنسية المعروفة تأخذ صيغتها المعتمدة.'},
+en:{t:'Your Name in Ancient Egypt',s:'Hieroglyphs, Coptic, English and Arabic — one block per word of your name.',ph:'Type a name in English or Arabic',
+h:'Write the full name for multi-word names (e.g. Mina Mohsen Ibrahim). For best Coptic accuracy, spell it phonetically.',lo:'Show results',
+o:{h:'Hieroglyphs',c:'Coptic',e:'English',a:'Arabic'},ld:'Layout',dh:'Horizontal',dv:'Vertical',lc:'Cartouche frame',lm:'Read left to right',
+dl:'Download image',sh:'Share',mic:'Voice input',ck:'Check and correct the name',ckh:'These boxes show our reading of each word. Correct the Arabic or English and the results update.',gs:'guessed, please check',ok:'established form',mine:'your spelling',ldc:'Use established church forms for known names',lbg:'Background',bgp:'Papyrus',bgg:'Gold',bgs:'Silver',bgl:'Lapis lazuli',ldl:'Download options',lsl:'All names on one line',zp:'Download ZIP pack (4 sizes)',rs:'Reset to default settings',an:'Make a card for a friend',pv:'Preview',pt:'Card preview',pwait:'Preparing…',lim:'Optional images (stay on your device, never uploaded)',lbf:'Your own background:',lpf:'Portrait (transparent PNG works best):',bcl:'Clear images',big:'Image too large (over 8MB)',bad:'Could not open the image',lqr:'Site QR code in the corner',ldu:'Dual card (two names)',ph2:'Second name',lfm:'Format',lsz:'Size',lsy:'Card style',
+fm:[['png','PNG'],['pngt','Transparent PNG'],['jpg','JPG'],['pdf','Print-ready PDF']],
+sz:[['auto','Auto (fit content)'],['sq','Square 1080×1080'],['st','Story 1080×1920'],['c57','Greeting card 13×18 cm'],['a5','A5'],['a4','A4 cover / poster'],['bc','Business card 9×5 cm'],['pl','Cartouche pendant 5×10 cm'],['plh','Cartouche plaque 10×5 cm'],['bn','Wide banner 3:1']],
+sy:[['c','Classic with labels'],['n','Clean, no labels'],['o','Hieroglyphs only'],['f','Double frame']],vl:'Voice language',lis:'Listening… say the name, then stop.',done:'Done. Edit the name in the box if needed.',ns:'Your browser does not support voice recognition. Try Chrome or Safari.',den:'The browser blocked the microphone. Allow it in site settings.',err:'We could not hear clearly. Please try again.',ls:'Hear the name',pv:'Voice recognition is handled by your browser and may send the recording to its servers. We store no audio.',em:'Type your name to see the result.',lg:'العربية',
+nt:'A phonetic approximation, not an official translation. Emphatic and guttural Arabic sounds (ص ض ط ظ ع ح) get the closest match only; well-known church names use their established form.'}};
+/* hieroglyph + Coptic maps for Arabic letters: [hieroglyph, Coptic] */
+var AR={'ا':['𓄿','Ⲁ'],'أ':['𓄿','Ⲁ'],'آ':['𓄿','Ⲁ'],'ء':['𓄿',''],'ى':['𓄿','Ⲁ'],'إ':['𓇋','Ⲓ'],'ئ':['𓇌','Ⲓ'],'ؤ':['𓅱','ⲞⲨ'],
+'ب':['𓃀','Ⲃ'],'پ':['𓊪','Ⲡ'],'ت':['𓏏','Ⲧ'],'ة':['𓏏','Ⲁ'],'ث':['𓍿','Ⲑ'],'ج':['𓎼','Ϫ'],'چ':['𓆓','Ϭ'],'ح':['𓎛','Ϩ'],'خ':['𓐍','Ϧ'],
+'د':['𓂧','Ⲇ'],'ذ':['𓊃','Ⲍ'],'ر':['𓂋','Ⲣ'],'ز':['𓊃','Ⲍ'],'س':['𓋴','Ⲥ'],'ش':['𓈙','Ϣ'],'ص':['𓋴','Ⲥ'],'ض':['𓂧','Ⲇ'],'ط':['𓏏','Ⲧ'],
+'ظ':['𓊃','Ⲍ'],'ع':['𓂝','Ⲁ'],'غ':['𓄡','Ⲅ'],'ف':['𓆑','Ⲫ'],'ڤ':['𓆑','Ⲃ'],'ق':['𓈎','Ⲕ'],'ك':['𓎡','Ⲕ'],'ل':['𓃭','Ⲗ'],'م':['𓅓','Ⲙ'],
+'ن':['𓈖','Ⲛ'],'ه':['𓉔','Ϩ'],'و':['𓅱','ⲞⲨ'],'ي':['𓇌','Ⲓ']};
+var VW='اأإآءىئؤويةع';
+var A2E={'ا':'a','أ':'a','إ':'i','آ':'a','ء':'','ى':'a','ئ':'i','ؤ':'u','ب':'b','پ':'p','ت':'t','ة':'a','ث':'th','ج':'j','چ':'ch','ح':'h','خ':'kh','د':'d','ذ':'dh','ر':'r','ز':'z','س':'s','ش':'sh','ص':'s','ض':'d','ط':'t','ظ':'z','ع':'a','غ':'gh','ف':'f','ڤ':'v','ق':'q','ك':'k','ل':'l','م':'m','ن':'n','ه':'h','و':'u','ي':'i'};
+/* English graphemes: [pattern, hieroglyph, Coptic, Arabic] */
+var EN=[['sh','𓈙','Ϣ','ش'],['ch','𓏏𓈙','Ϭ','تش'],['th','𓍿','Ⲑ','ث'],['kh','𓐍','Ϧ','خ'],['ph','𓆑','Ⲫ','ف'],['gh','𓄡','Ⲅ','غ'],['ee','𓇋','Ⲏ','ي'],['ea','𓇋','Ⲏ','ي'],['oo','𓅱','ⲞⲨ','و'],['ou','𓅱','ⲞⲨ','و'],
+['a','𓄿','Ⲁ','A'],['b','𓃀','Ⲃ','ب'],['c','𓎡','Ⲕ','ك'],['d','𓂧','Ⲇ','د'],['e','𓇋','Ⲉ','E'],['f','𓆑','Ⲫ','ف'],['g','𓎼','Ⲅ','ج'],['h','𓉔','Ϩ','ه'],['i','𓇋','Ⲓ','I'],
+['j','𓆓','Ϫ','ج'],['k','𓎡','Ⲕ','ك'],['l','𓃭','Ⲗ','ل'],['m','𓅓','Ⲙ','م'],['n','𓈖','Ⲛ','ن'],['o','𓅱','Ⲟ','O'],['p','𓊪','Ⲡ','ب'],['q','𓈎','Ⲕ','ق'],['r','𓂋','Ⲣ','ر'],
+['s','𓋴','Ⲥ','س'],['t','𓏏','Ⲧ','ت'],['u','𓅱','ⲞⲨ','U'],['v','𓆑','Ⲃ','ف'],['w','𓅱','ⲞⲨ','و'],['x','𓎡𓋴','Ⲝ','كس'],['y','𓇌','Ⲓ','ي'],['z','𓊃','Ⲍ','ز']];
+/* established church forms (Wikipedia: Coptic names; DBMNT): [Arabic, english variants, Coptic, display English] */
+var D=[['مينا','mina mena meena','ⲘⲎⲚⲀ','Mina'],['ميخائيل','michael mikhael mikael','ⲘⲒⲬⲀⲎⲖ','Michael'],['غبريال','gabriel','ⲄⲀⲂⲢⲒⲎⲖ','Gabriel'],
+['مرقس','mark marcos','ⲘⲀⲢⲔⲞⲤ','Mark'],['بطرس','peter botros','ⲠⲈⲦⲢⲞⲤ','Peter'],['بولس','paul boules','ⲠⲀⲨⲖⲞⲤ','Paul'],['يوحنا','john youhanna','ⲒⲰϨⲀⲚⲚⲎⲤ','John'],
+['يوسف','joseph youssef yousef','ⲒⲰⲤⲎⲪ','Joseph'],['إبراهيم','ibrahim abraham','ⲀⲂⲢⲀϨⲀⲘ','Ibrahim'],['إسحاق','isaac ishak ishaq','ⲒⲤⲀⲀⲔ','Isaac'],['داود','david dawood daoud','ⲆⲀⲨⲈⲒⲆ','David'],
+['مريم','mary mariam maryam','ⲘⲀⲢⲒⲀ','Mary'],['جرجس','george gerges','ⲄⲈⲰⲢⲄⲒⲞⲤ','George'],['كيرلس','cyril kyrillos','ⲔⲨⲢⲒⲖⲖⲞⲤ','Cyril'],['محمد','muhammad mohamed mohammed','ⲘⲰϨⲀⲘⲘⲎⲆ','Muhammad'],
+['بيشوي','bishoy pishoy','ⲠⲒϢⲰⲒ','Bishoy'],['شنودة','shenouda','ϢⲈⲚⲞⲨϮ','Shenouda'],['باسم','basem bassem','ⲂⲀⲤⲒⲘⲞⲤ','Basem'],['موريس','maurice morris','ⲘⲰⲢⲒⲤ','Maurice'],
+['بنيامين','benjamin','ⲂⲈⲚⲒⲀⲘⲒⲚ','Benjamin'],['زكريا','zakaria zechariah','ⲌⲀⲬⲀⲢⲒⲀⲤ','Zechariah'],['فيكتور','victor','ⲂⲒⲔⲦⲰⲢ','Victor'],['دميانة','demiana damiana','ⲆⲀⲘⲒⲀⲚⲎ','Demiana'],
+['إيريني','irene','ⲈⲒⲢⲎⲚⲎ','Irene'],['تكلا','thecla tekla','ⲐⲈⲔⲖⲀ','Thecla'],['لبيب','labib','ⲖⲀⲂⲒⲂ','Labib'],['حبيب','habib','ϨⲀⲠⲒⲠ','Habib']];
+var nA=function(s){return s.replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي')};
+var DM={};D.forEach(function(d){d[4]=d[3];DM[nA(d[0])]=d;d[1].split(' ').forEach(function(v){DM[v]=d})});
+function DF(){return{l:/^ar/i.test(navigator.language||'ar')?'ar':'en',o:{h:1,c:1,e:1,a:1},d:'h',cart:0,mir:0}}var S=DF(),SITE=location.href.split('#')[0];
+try{var sv=JSON.parse(localStorage.getItem('noe')||'null');if(sv)for(var k in sv)S[k]=sv[k]}catch(e){}
+var $=function(i){return document.getElementById(i)};
+var cons=function(t){return t.h&&VW.indexOf(t.ch)<0};
+function tokAr(w){var out=[],tash=/[\u064B-\u0650]/.test(w),i,c,t,run=0;
+ for(i=0;i<w.length;i++){c=w[i];
+  if(c==='\u064E'||c==='\u064B'){out.push({h:'',c:'Ⲁ',e:'a'});continue}
+  if(c==='\u0650'||c==='\u064D'){out.push({h:'',c:'Ⲓ',e:'i'});continue}
+  if(c==='\u064F'||c==='\u064C'){out.push({h:'',c:'ⲞⲨ',e:'u'});continue}
+  if(!AR[c])continue;
+  t={h:AR[c][0],c:AR[c][1],e:A2E[c]||'',ch:c};
+  if(i===0&&(c==='ي'||c==='و')){t.e=c==='ي'?'y':'w'}
+  out.push(t)}
+ if(!tash){var r=[],n=0;
+  out.forEach(function(t,j){r.push(t);var nx=out[j+1];
+   if(VW.indexOf(t.ch)<0){n++;if(nx&&VW.indexOf(nx.ch)<0&&n%2===1)r.push({h:'',c:'Ⲁ',e:'a'})}else n=0});
+  out=r}
+ return out}
+function tokEn(w){var out=[],i=0,p,m,j,prev='';w=w.toLowerCase().replace(/[^a-z]/g,'');
+ while(i<w.length){m=null;for(j=0;j<EN.length;j++){p=EN[j][0];if(w.substr(i,p.length)===p){m=EN[j];break}}
+  if(!m){i++;continue}
+  if(m[0]==='c'&&/[eiy]/.test(w[i+1]||''))m=['c','𓋴','Ⲥ','س'];
+  if(m[0]===prev&&m[0].length===1){i++;continue}
+  out.push({h:m[1],c:m[2],e:m[0],a:m[3],first:i===0,last:i+m[0].length>=w.length});prev=m[0];i+=m[0].length}
+ return out}
+function arFromEn(t){var V='AEIOU';return t.map(function(x,j){var a=x.a,pv=t[j-1],nx=t[j+1];
+ if(a==='ه'&&pv&&V.indexOf(pv.a)>=0&&nx&&V.indexOf(nx.a)<0)return'ح';
+ if(a==='A')return x.first?'أ':(x.last?'ا':'');if(a==='E')return x.first?'إ':'';if(a==='I')return x.first?'إ':'ي';if(a==='O')return x.first?'أ':'و';if(a==='U')return x.first?'أ':'و';return a}).join('')}
+function conv(raw){return raw.trim().split(/\s+/).filter(Boolean).map(function(w0){
+ var o=OV[w0]||{},isA=/[\u0600-\u06FF]/.test(w0),lkA=isA||!!o.ar,lkE=!isA||!!o.en,ar=o.ar||(isA?w0:''),en=o.en||(isA?'':w0),ha,he,hs,cs,d,c,h;
+ if(!ar)ar=arFromEn(tokEn(en));
+ if(!en){en=tokAr(ar).map(function(x){return x.e}).join('');en=en.charAt(0).toUpperCase()+en.slice(1)}
+ ha=/[\u0600-\u06FF]/.test(ar)?tokAr(ar):[];he=/[a-z]/i.test(en)?tokEn(en):[];
+ d=DM[nA(ar)]||DM[en.toLowerCase()];
+ hs=(lkA||!lkE)?ha:he;cs=(lkE||!lkA)?he:ha;
+ if(!hs.length)hs=ha.length?ha:he;if(!cs.length)cs=he.length?he:ha;
+ if(d){if(!lkA){ar=d[0];hs=tokAr(ar)}if(!lkE)en=d[3]}
+ h=hs.map(function(x){return x.h}).join('');c=(d&&S.dc!==0)?d[2]:cs.map(function(x){return x.c}).join('');
+ return{ar:ar,en:en,h:Array.from(h),c:c,k:w0,dk:!!d,lkA:lkA,lkE:lkE}})}
+var cap=function(s){return s.charAt(0).toUpperCase()+s.slice(1)};
+var cBg=null,cBgU='',port=null,portU='',words=[],OV={},words2=[],all=[],SEP={sep:1,ar:'و',en:'&',c:'&',h:[String.fromCodePoint(0x132F9)],k:'§',dk:1,lkA:1,lkE:1};
+function build(){words=conv($('n').value);words2=S.dual?conv($('n2').value):[];all=words.concat(words2.length?[SEP]:[],words2)}
+function L(){return TX[S.l]}
+function ui(){var t=L();document.documentElement.lang=S.l;document.documentElement.dir=S.l==='ar'?'rtl':'ltr';document.body.dataset.l=S.l;
+ $('t').textContent=t.t;$('s').textContent=t.s;$('n').placeholder=t.ph;$('h').textContent=t.h;$('lo').textContent=t.lo;$('ld').textContent=t.ld;
+ $('dh').textContent=t.dh;$('dv').textContent=t.dv;$('lc').textContent=t.lc;$('lm').textContent=t.lm;$('dl').textContent=t.dl;$('sh').textContent=t.sh;$('nt').textContent=t.nt;$('lg').textContent=t.lg;$('mic').textContent='🎤 '+t.mic;$('mic').setAttribute('aria-label',t.mic);$('ls').textContent='🔊 '+t.ls;$('pv').textContent=t.pv;$('vlab').textContent=t.vl;$('vl').value=S.vl||(S.l==='ar'?'ar-EG':'en-US');
+ document.title=t.t;var o=$('outs');o.textContent='';
+ ['h','c','e','a'].forEach(function(k){var lb=document.createElement('label'),cb=document.createElement('input');cb.type='checkbox';cb.checked=!!S.o[k];
+  cb.onchange=function(){S.o[k]=cb.checked?1:0;save();draw()};lb.appendChild(cb);lb.appendChild(document.createTextNode(t.o[k]));o.appendChild(lb)});
+ document.querySelectorAll('input[name=d]').forEach(function(r){r.checked=r.value===S.d});$('cart').checked=!!S.cart;$('mir').checked=!!S.mir;$('ldc').textContent=t.ldc;$('lbg').textContent=t.lbg;$('dc').checked=S.dc!==0;var bo=$('bg').options;bo[0].text=t.bgp;bo[1].text=t.bgg;bo[2].text=t.bgs;bo[3].text=t.bgl;$('bg').value=S.bg||'p';document.querySelector('main').dataset.bg=cBg?'x':(S.bg||'p');
+ $('ldl').textContent=t.ldl;$('lfm').textContent=t.lfm;$('lsz').textContent=t.lsz;$('lsy').textContent=t.lsy;$('lsl').textContent=t.lsl;$('zp').textContent=t.zp;$('rs').textContent=t.rs;$('pv').textContent='👁 '+t.pv;$('pt').textContent=t.pt;$('pd').textContent=t.dl;$('ps').textContent=t.sh;$('lim').textContent=t.lim;$('lbf').textContent=t.lbf;$('lpf').textContent=t.lpf;$('bc').textContent=t.bcl;$('an').textContent=t.an;$('lqr').textContent=t.lqr;$('ldu').textContent=t.ldu;$('n2').placeholder=t.ph2;$('n2').hidden=!S.dual;$('du').checked=!!S.dual;$('qr').checked=!!S.qr;$('sl').checked=S.sl===undefined?['pl','bc','bn','plh'].indexOf(S.z||'auto')>=0:!!S.sl;
+ [['fm',t.fm,S.f||'png'],['sz',t.sz,S.z||'auto'],['sy',t.sy,S.y||'c']].forEach(function(a){var sl=$(a[0]);sl.textContent='';a[1].forEach(function(o){var e=document.createElement('option');e.value=o[0];e.textContent=o[1];sl.appendChild(e)});sl.value=a[2]});
+ $('mir').parentNode.style.display=S.d==='v'?'none':'';draw()}
+function save(){try{localStorage.setItem('noe',JSON.stringify(S))}catch(e){}}
+function card(cls,title,fn){var c=document.createElement('section');c.className='card';var h=document.createElement('h2');h.textContent=title;c.appendChild(h);
+ var ln=document.createElement('div');ln.className='line'+(cls==='hg'&&S.d==='v'?' v':'');if(cls==='hg')ln.dir=(S.mir&&S.d==='h')?'ltr':'rtl';
+ all.forEach(function(w,i){var s=document.createElement('span');s.className='w '+cls+(cls==='hg'&&S.cart&&!w.sep?' cart':'')+(cls==='hg'&&!S.mir?' m':'');fn(s,w);ln.appendChild(s)});
+ c.appendChild(ln);return c}
+function draw(){build();corr();res()}
+function corr(){var c=$('cr'),t=L();c.textContent='';if(!words.length)return;
+ var box=document.createElement('fieldset'),lg=document.createElement('legend'),p=document.createElement('p');lg.textContent=t.ck;p.className='hint';p.textContent=t.ckh;box.appendChild(lg);box.appendChild(p);
+ all.forEach(function(w,i){if(w.sep)return;var row=document.createElement('div'),tag=document.createElement('small'),a,e;row.className='cr';
+  function tg(x){tag.textContent=x.dk?t.ok:(x.lkA&&x.lkE?t.mine:t.gs)}tg(w);
+  function inp(s,v){var x=document.createElement('input');x.type='text';x.value=v;x.dir=s==='ar'?'rtl':'ltr';x.maxLength=40;x.spellcheck=false;x.setAttribute('aria-label',(s==='ar'?t.o.a:t.o.e)+' '+(i+1));
+   x.oninput=function(){var q=x.value.trim(),ov=OV[w.k]=OV[w.k]||{};if(q)ov[s]=q;else delete ov[s];
+    build();var nw=all[i],oth=s==='ar'?e:a;if(!(s==='ar'?nw.lkE:nw.lkA))oth.value=s==='ar'?nw.en:nw.ar;tg(nw);res()};return x}
+  a=inp('ar',w.ar);e=inp('en',w.en);row.appendChild(a);row.appendChild(e);row.appendChild(tag);box.appendChild(row)});
+ c.appendChild(box)}
+function res(){var r=$('res'),t=L();r.textContent='';$('dl').disabled=$('sh').disabled=$('ls').disabled=$('pv').disabled=!words.length;
+ if(!words.length){var e=document.createElement('p');e.className='empty';e.textContent=t.em;r.appendChild(e);return}
+ if(portU){var pi=document.createElement('img');pi.src=portU;pi.alt='';pi.style.cssText='width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--lap);display:block;margin:0 auto 8px';r.appendChild(pi)}
+ if(S.o.h)r.appendChild(card('hg',t.o.h,function(s,w){w.h.forEach(function(g){var i=document.createElement('i');i.textContent=g;s.appendChild(i)})}));
+ if(S.o.c)r.appendChild(card('cp',t.o.c,function(s,w){s.textContent=w.c}));
+ if(S.o.e)r.appendChild(card('en',t.o.e,function(s,w){s.textContent=cap(w.en)}));
+ if(S.o.a)r.appendChild(card('ar',t.o.a,function(s,w){s.textContent=w.ar}))}
+var PRE={auto:[0,0],sq:[1080,1080,1],st:[1080,1920,1],c57:[127,178],a5:[148,210],a4:[210,297],bc:[90,50],pl:[50,100],plh:[100,50],bn:[300,100]};
+function render(mw){var fm=S.f||'png',sy=S.y||'c',pr=PRE[S.z||'auto']||PRE.auto,tr=fm==='pngt';
+ return Promise.all([document.fonts.load('48px "Noto Sans Egyptian Hieroglyphs"','𓄿'),document.fonts.load('40px "Noto Sans Coptic"','Ⲁ'),document.fonts.load('40px "Noto Naskh Arabic"','م'),document.fonts.load('600 40px Cinzel','A')]).then(function(){
+ var W=1080,P=70,MW=W-2*P,GAP=46,m=document.createElement('canvas').getContext('2d'),t=L(),PL=tr?PAL.p:(cBg?PAL.l:(PAL[S.bg]||PAL.p)),vert=S.d==='v',mirror=!S.mir,co=!!S.cart,lab0=sy==='c'||sy==='f',
+  B={h:sy==='o'?130:84,c:66,e:62,a:72},secs=sy==='o'?['h']:['h','c','e','a'].filter(function(k){return S.o[k]}),Hl=pr[0]?(pr[2]?pr[1]:Math.round(W*pr[1]/pr[0])):0;
+ if(!secs.length)secs=['h'];
+ var lab=lab0&&(!Hl||Hl>=900),oneL=S.sl===undefined?['pl','bc','bn','plh'].indexOf(S.z||'auto')>=0:!!S.sl;P=(Hl&&Hl<900)?36:70;MW=W-2*P;GAP=oneL?26:46;
+ function F(k,px){return k==='h'?px+'px "Noto Sans Egyptian Hieroglyphs",sans-serif':k==='c'?px+'px "Noto Sans Coptic",serif':k==='e'?'600 '+px+'px Cinzel,Georgia,serif':'700 '+px+'px "Noto Naskh Arabic",serif'}
+ function gm(g){var q=m.measureText(g),l=q.actualBoundingBoxLeft||0,r=q.actualBoundingBoxRight||0,w=l+r;return{w:w>0?w:q.width,l:w>0?l:0,r:w>0?r:q.width,a:q.actualBoundingBoxAscent||0,d:q.actualBoundingBoxDescent||0}}
+ function items(k){return all.map(function(w){var a=k==='h'?w.h.slice():[k==='c'?w.c:(k==='e'?cap(w.en):w.ar)];if(w.sep)a.sep=1;return a})}
+ function layout(fs){var tot=0,lay=secs.map(function(k){var it=items(k),px=B[k]*fs,ws,lines,cw,mx,pd,sec,hc=k==='h'&&co;
+  if(k==='h'&&vert){mx=Math.max.apply(null,it.map(function(a){return a.length}));px=Math.min(B.h*fs,Math.floor(MW/(it.length*(1.3+(hc?.64:0)))),Math.floor(880/(mx*1.25+(hc?.64:0))));pd=hc?px*.32:0;sec={k:k,px:px,it:it,v:1,pd:pd,h:mx*px*1.25+2*pd+10}}
+  else{for(;;){m.font=F(k,px);pd=hc?px*.32:0;ws=it.map(function(a){return a.reduce(function(sum,g){return sum+(k==='h'?gm(g).w+px*.1:m.measureText(g).width)},0)+2*pd});if((oneL?ws.reduce(function(a,b){return a+b},0)+GAP*(ws.length-1):Math.max.apply(null,ws))<=MW||px<=(oneL?10:30))break;px=Math.floor(px*.92)}
+   lines=[[]];cw=0;ws.forEach(function(w,j){var ln=lines[lines.length-1];if(ln.length&&cw+GAP+w>MW){lines.push([]);cw=0;ln=lines[lines.length-1]}cw+=(ln.length?GAP:0)+w;ln.push(j)});
+   if(oneL)lines=[ws.map(function(w,j){return j})];sec={k:k,px:px,it:it,ws:ws,lines:lines,pd:pd,h:lines.length*px*(k==='h'?(hc?1.5:1.4):1.55)+10}}
+  tot+=(lab?44:0)+sec.h+20;return sec});return{lay:lay,tot:tot}}
+ var qh=(S.qr&&window.QRCode)?130:0,ph=(port&&(!Hl||Hl>=900))?250:0,fs=Hl?1.6:1,res;
+ if(Hl){for(;;){res=layout(fs);if(res.tot<=Hl-2*P-60-qh-ph||fs<.3)break;fs*=.93}}else res=layout(1);
+ var Hn=Hl||Math.round(P*2+60+qh+ph+res.tot),k0=pr[0]?(pr[2]?1:pr[0]/25.4*300/W):2;k0=Math.min(k0,Math.sqrt(12e6/(W*Hn)));if(mw)k0=Math.min(k0,mw/W);
+ var cv=document.createElement('canvas');cv.width=Math.round(W*k0);cv.height=Math.round(Hn*k0);var x=cv.getContext('2d'),i,y;x.scale(k0,k0);
+ if(!tr){if(cBg){var rt=Math.max(W/cBg.width,Hn/cBg.height),dw=cBg.width*rt,dh=cBg.height*rt;x.drawImage(cBg,(W-dw)/2,(Hn-dh)/2,dw,dh);x.fillStyle='rgba(0,0,0,.45)';x.fillRect(0,0,W,Hn)}else{var g=x.createLinearGradient(0,0,W,Hn);g.addColorStop(0,PL[0]);g.addColorStop(1,PL[1]);x.fillStyle=g;x.fillRect(0,0,W,Hn)}
+  x.strokeStyle=PL[4];x.lineWidth=1;for(i=0;i<(cBg?0:700);i++){var yy=Math.random()*Hn,xx=Math.random()*W;x.beginPath();x.moveTo(xx,yy);x.lineTo(xx+40+Math.random()*120,yy);x.stroke()}
+  x.strokeStyle=PL[3];if(sy==='c'){x.lineWidth=4;x.strokeRect(24,24,W-48,Hn-48)}else if(sy==='f'){x.lineWidth=6;x.strokeRect(20,20,W-40,Hn-40);x.lineWidth=2;x.strokeRect(38,38,W-76,Hn-76)}else if(sy==='n'){x.lineWidth=2;x.strokeRect(34,34,W-68,Hn-68)}}
+ function drawG(gl,cx,cy,q){x.save();x.textBaseline='alphabetic';x.textAlign='left';var by=cy+(q.a-q.d)/2;
+  if(mirror){x.translate(cx,by);x.scale(-1,1);x.fillText(gl,(q.l-q.r)/2,0)}else x.fillText(gl,cx-q.w/2+q.l,by);x.restore()}
+ function rr(a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath();x.stroke()}
+ function cart(a,b,w,h,px,v,rtl){x.save();x.strokeStyle=PL[2];x.lineWidth=Math.max(3,px*.045);rr(a,b,w,h,Math.min(w,h)*.5);var q=px*.256;x.beginPath();
+  if(v){x.moveTo(a+w*.2,b+h-q);x.lineTo(a+w*.8,b+h-q)}else{var xb=rtl?a+q:a+w-q;x.moveTo(xb,b+h*.16);x.lineTo(xb,b+h*.84)}x.stroke();x.restore()}
+ y=Hl?Math.max(P,(Hn-60-qh-ph-res.tot)/2):P+10;
+ if(ph){var pc=y+110,rd=110;x.save();x.beginPath();x.arc(W/2,pc,rd,0,7);x.closePath();x.clip();var pz=Math.max(2*rd/port.width,2*rd/port.height);x.drawImage(port,W/2-port.width*pz/2,pc-port.height*pz/2,port.width*pz,port.height*pz);x.restore();x.beginPath();x.arc(W/2,pc,rd,0,7);x.strokeStyle=PL[3];x.lineWidth=6;x.stroke();y+=ph}
+ res.lay.forEach(function(s){var k=s.k,px=s.px,pd=s.pd;
+  if(lab){x.font='700 24px "Noto Naskh Arabic",Arial';x.fillStyle=PL[3];x.textBaseline='middle';x.textAlign=S.l==='ar'?'right':'left';x.fillText(t.o[k],S.l==='ar'?W-P:P,y+10);y+=44}
+  x.font=F(k,px);m.font=F(k,px);x.fillStyle=PL[2];x.textAlign='left';
+  if(s.v){var colW=px*1.3+2*pd,sx=(W+s.it.length*colW)/2-colW/2;
+   s.it.forEach(function(a,ci){var cx=sx-ci*colW;a.forEach(function(gl,j){drawG(gl,cx,y+pd+j*px*1.25+px*.625,gm(gl))});if(co&&!a.sep)cart(cx-px*.62,y,px*1.24,a.length*px*1.25+2*pd,px,1)})}
+  else s.lines.forEach(function(idx,li){var rtl=(k==='a')||(k==='h'&&!S.mir),lw=idx.reduce(function(a,j){return a+s.ws[j]},0)+GAP*(idx.length-1),cur=(W-lw)/2,order=rtl?idx.slice().reverse():idx,top=y+li*px*(k==='h'?(co?1.5:1.4):1.55);
+   order.forEach(function(j){var c0=cur;if(k==='h'){cur+=pd;var gl=s.it[j].slice();if(rtl)gl.reverse();gl.forEach(function(g1){var q=gm(g1);drawG(g1,cur+q.w/2,top+px*(co?.75:.7),q);cur+=q.w+px*.1});cur+=pd;if(co&&!s.it[j].sep)cart(c0,top+px*(co?.75:.7)-px*.62,cur-c0,px*1.24,px,0,rtl)}
+    else{x.textBaseline='alphabetic';x.fillText(s.it[j][0],cur,top+px);cur+=s.ws[j]}cur+=GAP})});
+  y+=s.h+20});
+ if(qh){var qd=document.createElement('div');new QRCode(qd,{text:DEEPLINK&&$('n').value.trim()?SITE+'?n='+encodeURIComponent($('n').value.trim())+(S.dual&&$('n2').value.trim()?'&n2='+encodeURIComponent($('n2').value.trim()):''):SITE,width:128,height:128,correctLevel:QRCode.CorrectLevel.M});var qc=qd.querySelector('canvas');if(qc){x.fillStyle='#fff';x.fillRect(W-P-118,Hn-70-118,118,118);x.drawImage(qc,W-P-112,Hn-70-112,106,106)}}
+ if(!tr){x.font='600 22px Cinzel,Georgia,serif';x.fillStyle=PL[3];x.textAlign='center';x.textBaseline='middle';x.fillText(BR,W/2,Hn-(sy==='f'?64:sy==='c'?48:sy==='n'?54:36))}
+ return{cv:cv,w:pr[0]&&!pr[2]?pr[0]:cv.width/300*25.4,h:pr[0]&&!pr[2]?pr[1]:cv.height/300*25.4}})}
+function blob(){return render().then(function(r){var f=S.f||'png',cv=r.cv;
+ if(f==='pdf'){var J=window.jspdf&&window.jspdf.jsPDF;if(J){var d=new J({unit:'mm',format:[r.w,r.h],orientation:r.w>r.h?'l':'p'});d.addImage(cv.toDataURL('image/jpeg',.92),'JPEG',0,0,r.w,r.h);return{b:d.output('blob'),ext:'pdf',type:'application/pdf'}}}
+ var ty=f==='jpg'?'image/jpeg':'image/png';return new Promise(function(ok){cv.toBlob(function(b){ok({b:b,ext:f==='jpg'?'jpg':'png',type:ty})},ty,.93)})})}
+$('dl').onclick=function(){blob().then(function(r){var a=document.createElement('a');a.href=URL.createObjectURL(r.b);a.download='name-egypt.'+r.ext;document.body.appendChild(a);a.click();a.remove()})};
+$('sh').onclick=function(){blob().then(function(r){var f=new File([r.b],'name-egypt.'+r.ext,{type:r.type}),txt=all.map(function(w){return w.h.join('')}).join('  ')+'\n'+BR;
+ if(navigator.canShare&&navigator.canShare({files:[f]}))return navigator.share({files:[f],text:txt});
+ window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank')}).catch(function(){})};
+['fm','sz','sy'].forEach(function(id){$(id).onchange=function(){S[{fm:'f',sz:'z',sy:'y'}[id]]=this.value;if(id==='sz'&&S.sl===undefined)$('sl').checked=['pl','bc','bn','plh'].indexOf(this.value)>=0;save()}});
+$('sl').onchange=function(){S.sl=this.checked?1:0;save()};
+$('qr').onchange=function(){S.qr=this.checked?1:0;save()};
+$('du').onchange=function(){S.dual=this.checked?1:0;$('n2').hidden=!S.dual;save();draw()};$('n2').addEventListener('input',draw);
+$('rs').onclick=function(){S=DF();OV={};try{localStorage.removeItem('noe')}catch(e){}ui()};
+$('zp').onclick=function(){var Z=window.JSZip;if(!Z||!words.length)return;var zb=$('zp'),keep=S.z,ids=['sq','c57','a4','plh'],zip=new Z(),i=0;zb.disabled=true;
+ (function nx(){if(i>=ids.length){S.z=keep;zip.generateAsync({type:'blob'}).then(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='name-egypt-pack.zip';document.body.appendChild(a);a.click();a.remove();zb.disabled=false});return}
+  S.z=ids[i];blob().then(function(r){zip.file('name-egypt-'+ids[i]+'.'+r.ext,r.b);i++;nx()})})()};
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null;
+$('mic').onclick=function(){var t=L(),st=$('vs'),mic=$('mic');
+ if(!SR){st.textContent=t.ns;return}
+ if(rec){rec.stop();return}
+ rec=new SR();rec.lang=$('vl').value;rec.interimResults=true;rec.maxAlternatives=1;
+ rec.onstart=function(){mic.setAttribute('aria-pressed','true');mic.classList.add('on');st.textContent=t.lis};
+ rec.onresult=function(e){var s='',i;for(i=0;i<e.results.length;i++)s+=e.results[i][0].transcript;$('n').value=s.replace(/[.،,!؟?]/g,'').trim();draw()};
+ rec.onerror=function(e){st.textContent=(e.error==='not-allowed'||e.error==='service-not-allowed')?t.den:t.err};
+ rec.onend=function(){rec=null;mic.setAttribute('aria-pressed','false');mic.classList.remove('on');if(st.textContent===t.lis)st.textContent=t.done};
+ try{rec.start()}catch(x){rec=null}};
+$('vl').onchange=function(){S.vl=this.value;save()};
+$('ls').onclick=function(){if(!window.speechSynthesis||!words.length)return;speechSynthesis.cancel();var ar=S.l==='ar';all.forEach(function(w){if(w.sep)return;var u=new SpeechSynthesisUtterance(ar?w.ar:w.en);u.lang=ar?'ar-SA':'en-US';speechSynthesis.speak(u)})};
+$('n').addEventListener('input',draw);
+$('lg').onclick=function(){S.l=S.l==='ar'?'en':'ar';save();ui()};
+document.querySelectorAll('input[name=d]').forEach(function(r){r.onchange=function(){S.d=r.value;save();ui()}});
+$('cart').onchange=function(){S.cart=this.checked?1:0;save();draw()};
+$('dc').onchange=function(){S.dc=this.checked?1:0;save();draw()};$('bg').onchange=function(){S.bg=this.value;save();cBg=null;document.querySelector('main').dataset.bg=S.bg};
+$('mir').onchange=function(){S.mir=this.checked?1:0;save();draw()};
+function loadImg(f,cb){var st=$('is'),t=L();if(!f)return;if(f.size>8*1048576){st.textContent=t.big;return}var u=URL.createObjectURL(f),im=new Image();im.onload=function(){st.textContent='';cb(im,u);draw()};im.onerror=function(){st.textContent=t.bad};im.src=u}
+$('bf').onchange=function(){loadImg(this.files[0],function(im,u){if(cBgU)URL.revokeObjectURL(cBgU);cBg=im;cBgU=u;var m=document.querySelector('main');m.style.setProperty('--cbg','url("'+u+'")');m.dataset.bg='x'})};
+$('pf').onchange=function(){loadImg(this.files[0],function(im,u){if(portU)URL.revokeObjectURL(portU);port=im;portU=u})};
+$('bc').onclick=function(){cBg=null;port=null;portU='';$('bf').value='';$('pf').value='';document.querySelector('main').dataset.bg=S.bg||'p';draw()};
+$('pv').onclick=function(){if(!words.length)return;var b=this,t=L();b.disabled=true;b.textContent=t.pwait;
+ render(760).then(function(r){$('pi').src=r.cv.toDataURL('image/png');$('pm').hidden=false;$('pcl').focus()}).then(function(){b.disabled=false;b.textContent='👁 '+t.pv},function(){b.disabled=false;b.textContent='👁 '+t.pv})};
+$('pcl').onclick=function(){$('pm').hidden=true};$('pm').onclick=function(e){if(e.target===this)this.hidden=true};
+$('pd').onclick=function(){$('dl').click()};$('ps').onclick=function(){$('sh').click()};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')$('pm').hidden=true});
+$('an').onclick=function(){$('n').value='';$('n2').value='';OV={};draw();$('n').focus();window.scrollTo(0,0)};
+var DEEPLINK=false;try{var qs=new URLSearchParams(location.search);if(qs.get('n')){$('n').value=qs.get('n').slice(0,60);if(qs.get('n2')){S.dual=1;$('n2').value=qs.get('n2').slice(0,60)}}}catch(e){}
+ui();
+})();
+</script>
+</body>
+</html>
