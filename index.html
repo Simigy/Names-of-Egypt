@@ -255,20 +255,20 @@ function render(mw){var fm=S.f||'png',sy=S.y||'c',pr=PRE[S.z||'auto']||PRE.auto,
 
  var GOLD='#d4af37',DARK='#2b2118',BLUE='#1f4e8c';
  function cross(a,b,sz){x.save();x.strokeStyle=GOLD;x.fillStyle=GOLD;x.lineWidth=Math.max(4,sz*.3);x.beginPath();x.moveTo(a-sz,b);x.lineTo(a+sz,b);x.moveTo(a,b-sz);x.lineTo(a,b+sz);x.stroke();[[-sz,0],[sz,0],[0,-sz],[0,sz]].forEach(function(o){x.beginPath();x.arc(a+o[0],b+o[1],sz*.3,0,7);x.fill()});x.restore()}
- function lap(pts){x.save();x.beginPath();pts.forEach(function(q,i){i?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1])});x.closePath();x.fillStyle=GOLD;x.fill();x.clip();x.fillStyle=BLUE;var y0=pts[0][1],y1=pts[2][1],j;for(j=0;y0+j*16<y1;j+=2)x.fillRect(pts[3][0]-60,y0+j*16,260,16);x.restore();x.beginPath();pts.forEach(function(q,i){i?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1])});x.closePath();x.strokeStyle=DARK;x.lineWidth=4;x.stroke()}
  function pfr(st,cx,cy,r,front){var i,a;x.save();x.lineJoin='round';
   if(st==='e'&&front){x.strokeStyle=GOLD;x.lineWidth=9;x.beginPath();x.arc(cx,cy,r+14,0,7);x.stroke();x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy,r+22,0,7);x.stroke();x.fillStyle=GOLD;
    for(i=0;i<16;i++){a=i*Math.PI/8;x.beginPath();x.moveTo(cx+Math.cos(a-.09)*(r+24),cy+Math.sin(a-.09)*(r+24));x.lineTo(cx+Math.cos(a)*(r+44),cy+Math.sin(a)*(r+44));x.lineTo(cx+Math.cos(a+.09)*(r+24),cy+Math.sin(a+.09)*(r+24));x.closePath();x.fill();x.stroke()}}
-  if(st==='c'&&front){x.strokeStyle=GOLD;x.lineWidth=8;x.beginPath();x.arc(cx,cy,r+14,0,7);x.stroke();for(i=0;i<4;i++){a=i*Math.PI/2+Math.PI/4;cross(cx+Math.cos(a)*(r+14),cy+Math.sin(a)*(r+14),13)}cross(cx,cy-r-46,26)}
-  if(st==='p'){if(!front){lap([[cx-r*.98,cy-r*.1],[cx-r*.5,cy-r*.1],[cx-r*.45,cy+r*1.2],[cx-r*1.2,cy+r*1.2]]);lap([[cx+r*.5,cy-r*.1],[cx+r*.98,cy-r*.1],[cx+r*1.2,cy+r*1.2],[cx+r*.45,cy+r*1.2]])}
-   else{x.strokeStyle=DARK;x.lineWidth=30;x.beginPath();x.arc(cx,cy,r-12,Math.PI*1.1,Math.PI*1.9);x.stroke();x.strokeStyle=GOLD;x.lineWidth=22;x.beginPath();x.arc(cx,cy,r-12,Math.PI*1.1,Math.PI*1.9);x.stroke();
-    x.fillStyle=GOLD;x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy-r+6,14,0,7);x.fill();x.stroke();x.beginPath();x.moveTo(cx,cy-r+20);x.quadraticCurveTo(cx+20,cy-r+42,cx,cy-r+62);x.lineWidth=7;x.strokeStyle=GOLD;x.stroke()}}
-  x.restore()}
+  if(st==='c'&&front){x.strokeStyle=GOLD;x.lineWidth=8;x.beginPath();x.arc(cx,cy,r+14,0,7);x.stroke();for(i=0;i<6;i++){a=Math.PI/2+i*Math.PI/3;cross(cx+Math.cos(a)*(r+14),cy+Math.sin(a)*(r+14),12)}}
+  if(st==='p'&&front){x.strokeStyle=DARK;x.lineWidth=26;x.beginPath();x.arc(cx,cy,r+16,0,7);x.stroke();x.strokeStyle=GOLD;x.lineWidth=20;x.beginPath();x.arc(cx,cy,r+16,0,7);x.stroke();
+    for(i=0;i<12;i++){x.strokeStyle=i%2?BLUE:GOLD;x.lineWidth=13;x.beginPath();x.arc(cx,cy,r+16,i*Math.PI/6+.03,(i+1)*Math.PI/6-.03);x.stroke()}
+    x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy,r+28,0,7);x.stroke();x.beginPath();x.arc(cx,cy,r+5,0,7);x.stroke();
+    x.fillStyle=GOLD;x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy-r-30,12,0,7);x.fill();x.stroke();x.strokeStyle=GOLD;x.lineWidth=6;x.beginPath();x.moveTo(cx,cy-r-18);x.quadraticCurveTo(cx+10,cy-r+2,cx,cy-r+14);x.stroke()}
+   x.restore()}
  function drawPort(cx,cy,rd){var st=S.pst||'n';pfr(st,cx,cy,rd,0);x.save();x.beginPath();x.arc(cx,cy,rd,0,7);x.closePath();x.clip();var pz=Math.max(2*rd/port.width,2*rd/port.height);x.drawImage(port,cx-port.width*pz/2,cy-port.height*pz/2,port.width*pz,port.height*pz);x.restore();x.beginPath();x.arc(cx,cy,rd,0,7);x.strokeStyle=PLc[3];x.lineWidth=6;x.stroke();pfr(st,cx,cy,rd,1)}
  function cover(){var cx0=W/2,cw=W/2,cm=cx0+cw/2,st=S.pst||'n';
-  var TOP={n:.18,e:.4,c:.58,p:.28},SIDE={n:.14,e:.42,c:.34,p:1.26},BOT={n:.18,e:.4,c:.34,p:1.26},nm,ay,rd=0;
+  var TOP={n:.18,e:.42,c:.32,p:.45},SIDE={n:.14,e:.42,c:.32,p:.42},BOT={n:.18,e:.42,c:.32,p:.42},nm,ay,rd=0;
   nm=all.map(function(w){return S.l==='ar'?w.ar:cap(w.en)});
-  if(port){rd=Math.min(150,cw*(st==='p'||st==='c'?.22:.26),(cw/2-P-10)/(1+SIDE[st]));if(rd<40)rd=40}
+  if(port){rd=Math.min(150,cw*(st==='p'||st==='c'?.24:.26),(cw/2-P-10)/(1+SIDE[st]));if(rd<40)rd=40}
   var area=Hn-60-60-(port?rd*(2+TOP[st]+BOT[st])+50:0);
   var fn=function(){x.font=S.l==='ar'?'700 '+pxn+'px "Noto Naskh Arabic",serif':'600 '+pxn+'px Cinzel,Georgia,serif';mx=Math.max.apply(null,nm.map(function(q){return x.measureText(q).width}))};
   var pxn=120,mx;for(fn();;){if((mx<=cw-2*P&&nm.length*pxn*1.35<=area)||pxn<=24)break;pxn=Math.floor(pxn*.92);fn()}
@@ -289,9 +289,9 @@ function render(mw){var fm=S.f||'png',sy=S.y||'c',pr=PRE[S.z||'auto']||PRE.auto,
   y+=s.h+20});
  if(fold){x.save();x.setLineDash([16,12]);x.strokeStyle=PL[3];x.lineWidth=2;x.beginPath();x.moveTo(W/2,24);x.lineTo(W/2,Hn-24);x.stroke();x.restore()}
  if(qh){var qd=document.createElement('div');new QRCode(qd,{text:DEEPLINK&&$('n').value.trim()?SITE+'?n='+encodeURIComponent($('n').value.trim())+(S.dual&&$('n2').value.trim()?'&n2='+encodeURIComponent($('n2').value.trim()):''):SITE,width:128,height:128,correctLevel:QRCode.CorrectLevel.M});var qc=qd.querySelector('canvas');if(qc){x.fillStyle='#fff';x.fillRect(Wc-P-148,Hn-210,126,126);x.drawImage(qc,Wc-P-140,Hn-202,110,110)}}
- if(!tr){var Av=Wc-2*P-(qh?140:0),fq=22;x.fillStyle=PL[3];x.font='600 '+fq+'px Cinzel,Georgia,serif';
+ if(!tr){var Av=Wc-2*P,fq=22;x.fillStyle=PL[3];x.font='600 '+fq+'px Cinzel,Georgia,serif';
   for(;;){if(x.measureText(BR).width<=Av||fq<=12)break;fq=Math.floor(fq*.92);x.font='600 '+fq+'px Cinzel,Georgia,serif'}
-  x.textAlign='center';x.textBaseline='middle';x.fillText(BR,qh?P+Av/2:Wc/2,Hn-(sy==='f'?64:sy==='c'?48:sy==='n'?54:36))}
+  x.textAlign='center';x.textBaseline='middle';x.fillText(BR,Wc/2,Hn-(sy==='f'?64:sy==='c'?48:sy==='n'?54:36))}
  return{cv:cv,w:pr[0]&&!pr[2]?pr[0]:cv.width/300*25.4,h:pr[0]&&!pr[2]?pr[1]:cv.height/300*25.4}})}
 function blob(){return render().then(function(r){var f=S.f||'png',cv=r.cv;
  if(f==='pdf'){var J=window.jspdf&&window.jspdf.jsPDF;if(J){var d=new J({unit:'mm',format:[r.w,r.h],orientation:r.w>r.h?'l':'p'});d.addImage(cv.toDataURL('image/jpeg',.92),'JPEG',0,0,r.w,r.h);return{b:d.output('blob'),ext:'pdf',type:'application/pdf'}}}
