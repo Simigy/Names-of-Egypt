@@ -307,7 +307,7 @@ $('pcl').onclick=function(){$('pm').hidden=true};$('pm').onclick=function(e){if(
 $('pd').onclick=function(){$('dl').click()};$('ps').onclick=function(){$('sh').click()};
 document.addEventListener('keydown',function(e){if(e.key==='Escape')$('pm').hidden=true});
 $('an').onclick=function(){$('n').value='';$('n2').value='';OV={};draw();$('n').focus();window.scrollTo(0,0)};
-var DEEPLINK=false;try{var qs=new URLSearchParams(location.search);if(qs.get('n')){$('n').value=qs.get('n').slice(0,60);if(qs.get('n2')){S.dual=1;$('n2').value=qs.get('n2').slice(0,60)}}}catch(e){}
+var DEEPLINK=true;try{var qs=new URLSearchParams(location.search);if(qs.get('n')){$('n').value=qs.get('n').slice(0,60);if(qs.get('n2')){S.dual=1;$('n2').value=qs.get('n2').slice(0,60)}}}catch(e){}
 ui();
 })();
 </script>
