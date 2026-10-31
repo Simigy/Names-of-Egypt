@@ -259,17 +259,17 @@ function render(mw){var fm=S.f||'png',sy=S.y||'c',pr=PRE[S.z||'auto']||PRE.auto,
   if(st==='e'&&front){x.strokeStyle=GOLD;x.lineWidth=9;x.beginPath();x.arc(cx,cy,r+14,0,7);x.stroke();x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy,r+22,0,7);x.stroke();x.fillStyle=GOLD;
    for(i=0;i<16;i++){a=i*Math.PI/8;x.beginPath();x.moveTo(cx+Math.cos(a-.09)*(r+24),cy+Math.sin(a-.09)*(r+24));x.lineTo(cx+Math.cos(a)*(r+44),cy+Math.sin(a)*(r+44));x.lineTo(cx+Math.cos(a+.09)*(r+24),cy+Math.sin(a+.09)*(r+24));x.closePath();x.fill();x.stroke()}}
   if(st==='c'&&front){x.strokeStyle=GOLD;x.lineWidth=8;x.beginPath();x.arc(cx,cy,r+14,0,7);x.stroke();for(i=0;i<4;i++){a=Math.PI/4+i*Math.PI/2;cross(cx+Math.cos(a)*(r+14),cy+Math.sin(a)*(r+14),13)}cross(cx,cy-r-46,26)}
-  if(st==='p'&&!front){var s4,ly,P1,P2,P3,P4;for(s4=-1;s4<=1;s4+=2){P1=[cx+s4*r*.98,cy-r*.1];P2=[cx+s4*r*.5,cy-r*.1];P3=[cx+s4*r*.45,cy+r*1.2];P4=[cx+s4*r*1.2,cy+r*1.2];
-    x.beginPath();x.moveTo(P1[0],P1[1]);x.lineTo(P2[0],P2[1]);x.lineTo(P3[0],P3[1]);x.lineTo(P4[0],P4[1]);x.closePath();x.fillStyle=GOLD;x.fill();x.save();x.clip();x.fillStyle=BLUE;for(ly=cy-r*.1;ly<cy+r*1.2;ly+=32)x.fillRect(cx-r*1.3,ly,r*2.6,16);x.restore();
-    x.beginPath();x.moveTo(P1[0],P1[1]);x.lineTo(P2[0],P2[1]);x.lineTo(P3[0],P3[1]);x.lineTo(P4[0],P4[1]);x.closePath();x.strokeStyle=DARK;x.lineWidth=4;x.stroke()}}
-   if(st==='p'&&front){x.strokeStyle=DARK;x.lineWidth=28;x.beginPath();x.arc(cx,cy,r+19,Math.PI*1.08,Math.PI*1.92);x.stroke();x.strokeStyle=GOLD;x.lineWidth=20;x.beginPath();x.arc(cx,cy,r+19,Math.PI*1.08,Math.PI*1.92);x.stroke();x.strokeStyle=DARK;x.lineWidth=2;x.beginPath();x.arc(cx,cy,r+5,0,7);x.stroke();x.beginPath();x.arc(cx,cy,r+33,Math.PI*1.08,Math.PI*1.92);x.stroke();
-    x.fillStyle=GOLD;x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy-r-44,14,0,7);x.fill();x.stroke();x.strokeStyle=GOLD;x.lineWidth=8;x.beginPath();x.moveTo(cx,cy-r-30);x.quadraticCurveTo(cx+6,cy-r-14,cx,cy-r-2);x.stroke()}
+  if(st==='p'&&front){x.strokeStyle=DARK;x.lineWidth=2;x.beginPath();x.arc(cx,cy,r+7,0,7);x.stroke();x.beginPath();x.arc(cx,cy,r+r*.36,0,7);x.stroke();
+    x.beginPath();x.arc(cx,cy,r+r*.36-2,0,7);x.arc(cx,cy,r+9,0,7);x.fillStyle=GOLD;x.fill('evenodd');
+    var gs=all.map(function(w){return w.h.join('')}).join('')||'𓋹𓂀𓅓𓆙𓏏𓇇';if(gs.length<6)gs=gs+gs;
+    var gsz=Math.max(11,r*.24),Rm2=r+r*.2,gi,gch,ga,n=Math.max(10,Math.floor(2*Math.PI*Rm2/(gsz*.78)));x.fillStyle=DARK;x.font='700 '+gsz+'px "Noto Sans Egyptian Hieroglyphs",sans-serif';x.textAlign='center';x.textBaseline='middle';
+    for(gi=0;gi<n;gi++){gch=gs[gi%gs.length];ga=-Math.PI/2+(S.l==='ar'?-1:1)*gi*2*Math.PI/n;x.save();x.translate(cx+Math.cos(ga)*Rm2,cy+Math.sin(ga)*Rm2);x.rotate(ga+Math.PI/2);if(S.mir)x.scale(-1,1);x.fillText(gch,0,0);x.restore()}}
    x.restore()}
  function drawPort(cx,cy,rd){var st=S.pst||'n';pfr(st,cx,cy,rd,0);x.save();x.beginPath();x.arc(cx,cy,rd,0,7);x.closePath();x.clip();var pz=Math.max(2*rd/port.width,2*rd/port.height);x.drawImage(port,cx-port.width*pz/2,cy-port.height*pz*.42,port.width*pz,port.height*pz);x.restore();x.beginPath();x.arc(cx,cy,rd,0,7);x.strokeStyle=PLc[3];x.lineWidth=6;x.stroke();pfr(st,cx,cy,rd,1)}
  function cover(){var cx0=W/2,cw=W/2,cm=cx0+cw/2,st=S.pst||'n';
-  var TOP={n:.18,e:.42,c:.62,p:.62},SIDE={n:.14,e:.42,c:.34,p:1.26},BOT={n:.18,e:.42,c:.34,p:1.28},nm,ay,rd=0;
+  var TOP={n:.18,e:.42,c:.62,p:.36},SIDE={n:.14,e:.42,c:.34,p:.36},BOT={n:.18,e:.42,c:.34,p:.36},nm,ay,rd=0;
   nm=all.map(function(w){return S.l==='ar'?w.ar:cap(w.en)});
-  if(port){rd=Math.min(150,cw*(st==='p'||st==='c'?.24:.26),(cw/2-P-10)/(1+SIDE[st]));if(rd<40)rd=40}
+  if(port){rd=Math.min(150,cw*(st==='c'?.24:.26),(cw/2-P-10)/(1+SIDE[st]));if(rd<40)rd=40}
   var area=Hn-60-60-(port?rd*(2+TOP[st]+BOT[st])+50:0);
   var fn=function(){x.font=S.l==='ar'?'700 '+pxn+'px "Noto Naskh Arabic",serif':'600 '+pxn+'px Cinzel,Georgia,serif';mx=Math.max.apply(null,nm.map(function(q){return x.measureText(q).width}))};
   var pxn=120,mx;for(fn();;){if((mx<=cw-2*P&&nm.length*pxn*1.35<=area)||pxn<=24)break;pxn=Math.floor(pxn*.92);fn()}
