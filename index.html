@@ -258,15 +258,15 @@ function render(mw){var fm=S.f||'png',sy=S.y||'c',pr=PRE[S.z||'auto']||PRE.auto,
  function pfr(st,cx,cy,r,front){var i,a;x.save();x.lineJoin='round';
   if(st==='e'&&front){x.strokeStyle=GOLD;x.lineWidth=9;x.beginPath();x.arc(cx,cy,r+14,0,7);x.stroke();x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy,r+22,0,7);x.stroke();x.fillStyle=GOLD;
    for(i=0;i<16;i++){a=i*Math.PI/8;x.beginPath();x.moveTo(cx+Math.cos(a-.09)*(r+24),cy+Math.sin(a-.09)*(r+24));x.lineTo(cx+Math.cos(a)*(r+44),cy+Math.sin(a)*(r+44));x.lineTo(cx+Math.cos(a+.09)*(r+24),cy+Math.sin(a+.09)*(r+24));x.closePath();x.fill();x.stroke()}}
-  if(st==='c'&&front){x.strokeStyle=GOLD;x.lineWidth=8;x.beginPath();x.arc(cx,cy,r+14,0,7);x.stroke();for(i=0;i<6;i++){a=Math.PI/2+i*Math.PI/3;cross(cx+Math.cos(a)*(r+14),cy+Math.sin(a)*(r+14),12)}}
-  if(st==='p'&&front){x.strokeStyle=DARK;x.lineWidth=26;x.beginPath();x.arc(cx,cy,r+16,0,7);x.stroke();x.strokeStyle=GOLD;x.lineWidth=20;x.beginPath();x.arc(cx,cy,r+16,0,7);x.stroke();
-    for(i=0;i<12;i++){x.strokeStyle=i%2?BLUE:GOLD;x.lineWidth=13;x.beginPath();x.arc(cx,cy,r+16,i*Math.PI/6+.03,(i+1)*Math.PI/6-.03);x.stroke()}
-    x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy,r+28,0,7);x.stroke();x.beginPath();x.arc(cx,cy,r+5,0,7);x.stroke();
-    x.fillStyle=GOLD;x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy-r-30,12,0,7);x.fill();x.stroke();x.strokeStyle=GOLD;x.lineWidth=6;x.beginPath();x.moveTo(cx,cy-r-18);x.quadraticCurveTo(cx+10,cy-r+2,cx,cy-r+14);x.stroke()}
+  if(st==='c'&&front){x.strokeStyle=GOLD;x.lineWidth=8;x.beginPath();x.arc(cx,cy,r+14,0,7);x.stroke();for(i=0;i<4;i++){a=Math.PI/4+i*Math.PI/2;cross(cx+Math.cos(a)*(r+14),cy+Math.sin(a)*(r+14),13)}cross(cx,cy-r-46,26);cross(cx,cy+r+46,26)}
+  if(st==='p'&&!front){var s2,ly;for(s2=-1;s2<=1;s2+=2){x.beginPath();x.moveTo(cx+s2*r*.55,cy-r*.15);x.lineTo(cx+s2*r*1.04,cy-r*.15);x.lineTo(cx+s2*r*1.04,cy+r*1.04);x.lineTo(cx+s2*r*.4,cy+r*1.04);x.closePath();x.fillStyle=GOLD;x.fill();x.save();x.clip();x.fillStyle=BLUE;for(ly=cy-r*.15;ly<cy+r*1.04;ly+=r*.36)x.fillRect(cx-r*1.2,ly,r*2.4,r*.18);x.restore();x.beginPath();x.moveTo(cx+s2*r*.55,cy-r*.15);x.lineTo(cx+s2*r*1.04,cy-r*.15);x.lineTo(cx+s2*r*1.04,cy+r*1.04);x.lineTo(cx+s2*r*.4,cy+r*1.04);x.closePath();x.strokeStyle=DARK;x.lineWidth=4;x.stroke()}}
+   if(st==='p'&&front){var j2;x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy,r+6,0,7);x.stroke();for(j2=0;j2<12;j2++){a=Math.PI+j2*Math.PI/12;x.beginPath();x.moveTo(cx+Math.cos(a)*(r+5),cy+Math.sin(a)*(r+5));x.arc(cx,cy,r+41,a,a+Math.PI/12);x.closePath();x.fillStyle=j2%2?BLUE:GOLD;x.fill()}
+    x.strokeStyle=DARK;x.lineWidth=3;x.beginPath();x.arc(cx,cy,r+5,0,7);x.stroke();x.beginPath();x.arc(cx,cy,r+41,0,7);x.stroke();
+    x.strokeStyle=GOLD;x.lineWidth=Math.max(4,r*.06);x.beginPath();x.moveTo(cx,cy-r-4);x.quadraticCurveTo(cx+r*.07,cy-r-r*.16,cx,cy-r-r*.26);x.stroke();x.fillStyle=GOLD;x.strokeStyle=DARK;x.lineWidth=4;x.beginPath();x.arc(cx,cy-r-r*.3,r*.09,0,7);x.fill();x.stroke()}
    x.restore()}
- function drawPort(cx,cy,rd){var st=S.pst||'n';pfr(st,cx,cy,rd,0);x.save();x.beginPath();x.arc(cx,cy,rd,0,7);x.closePath();x.clip();var pz=Math.max(2*rd/port.width,2*rd/port.height);x.drawImage(port,cx-port.width*pz/2,cy-port.height*pz/2,port.width*pz,port.height*pz);x.restore();x.beginPath();x.arc(cx,cy,rd,0,7);x.strokeStyle=PLc[3];x.lineWidth=6;x.stroke();pfr(st,cx,cy,rd,1)}
+ function drawPort(cx,cy,rd){var st=S.pst||'n';pfr(st,cx,cy,rd,0);x.save();x.beginPath();x.arc(cx,cy,rd,0,7);x.closePath();x.clip();var pz=Math.max(2*rd/port.width,2*rd/port.height);x.drawImage(port,cx-port.width*pz/2,cy-port.height*pz*.42,port.width*pz,port.height*pz);x.restore();x.beginPath();x.arc(cx,cy,rd,0,7);x.strokeStyle=PLc[3];x.lineWidth=6;x.stroke();pfr(st,cx,cy,rd,1)}
  function cover(){var cx0=W/2,cw=W/2,cm=cx0+cw/2,st=S.pst||'n';
-  var TOP={n:.18,e:.42,c:.32,p:.45},SIDE={n:.14,e:.42,c:.32,p:.42},BOT={n:.18,e:.42,c:.32,p:.42},nm,ay,rd=0;
+  var TOP={n:.18,e:.42,c:.62,p:.45},SIDE={n:.14,e:.42,c:.34,p:1.05},BOT={n:.18,e:.42,c:.62,p:1.08},nm,ay,rd=0;
   nm=all.map(function(w){return S.l==='ar'?w.ar:cap(w.en)});
   if(port){rd=Math.min(150,cw*(st==='p'||st==='c'?.24:.26),(cw/2-P-10)/(1+SIDE[st]));if(rd<40)rd=40}
   var area=Hn-60-60-(port?rd*(2+TOP[st]+BOT[st])+50:0);
