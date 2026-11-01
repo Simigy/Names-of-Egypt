@@ -322,7 +322,7 @@ function render(mw){var fm=S.f||'png',sy=S.y||'c',bdm=S.bd||'x',deco=bdm!=='x',p
   x.fillStyle=PLc[2];x.textAlign='center';x.textBaseline='alphabetic';nm.forEach(function(q,i){x.fillText(q,cm,ay+pxn+i*pxn*1.35)})}
  y=Hl?Math.max(P,(Hn-60-(S.z==='bc'?0:qh)-ph-res.tot)/2):P+10;
  if(ph){drawPort(W/2,Math.max(y+110,P+pTop),prd);y+=ph}
- if(sidePort){var sr=70,se=psty==='p'?48:(psty==='c'?46:psty==='e'?44:8);drawPort(P+sr+se+8,Hn-P-sr-se,sr)}
+ if(sidePort){var sr=70,se=psty==='p'?48:(psty==='c'?46:psty==='e'?44:8),si=20;drawPort(P+sr+se+si,Hn-P-sr-se-si,sr)}
  if(fold)cover();
  res.lay.forEach(function(s){var k=s.k,px=s.px,pd=s.pd;
   if(lab){x.font='700 24px "Noto Naskh Arabic",Arial';x.fillStyle=PL[3];x.textBaseline='middle';x.textAlign=S.l==='ar'?'right':'left';x.fillText(t.o[k],S.l==='ar'?Wc-P:P,y+10);y+=44}
