@@ -243,7 +243,7 @@ function render(mw){var fm=S.f||'png',sy=S.y||'c',bdm=S.bd||'x',deco=bdm!=='x',p
    lines=[[]];cw=0;ws.forEach(function(w,j){var ln=lines[lines.length-1];if(ln.length&&cw+GAP+w>MW){lines.push([]);cw=0;ln=lines[lines.length-1]}cw+=(ln.length?GAP:0)+w;ln.push(j)});
    if(oneL)lines=[ws.map(function(w,j){return j})];sec={k:k,px:px,it:it,ws:ws,lines:lines,pd:pd,h:lines.length*px*(k==='h'?(hc?1.5:1.4):1.55)+10}}
   tot+=(lab?44:0)+sec.h+20;return sec});return{lay:lay,tot:tot}}
- var qh=(S.qr&&window.QRCode)?130:0,psty=S.pst||'n',prd=110,pTop=prd+(psty==='p'?90:(psty==='c'?82:psty==='e'?48:8)),ph=(port&&!fold&&(!Hl||Hl>=900))?(pTop+prd+(psty==='p'?48:14)):0,fs=Hl?1.6:1,res;
+ var qh=(S.qr&&window.QRCode)?130:0,psty=S.pst||'n',sidePort=port&&S.z==='bc',prd=110,pTop=prd+(psty==='p'?90:(psty==='c'?82:psty==='e'?48:8)),ph=(port&&!sidePort&&!fold&&(!Hl||Hl>=900))?(pTop+prd+(psty==='p'?48:14)):0,fs=Hl?1.6:1,res;
  if(Hl){for(;;){res=layout(fs);if(res.tot<=Hl-2*P-60-qh-ph||fs<.3)break;fs*=.93}}else res=layout(1);
  var Hn=Hl||Math.round(P*2+60+qh+ph+res.tot),k0=pr[0]?(pr[2]?1:pr[0]/25.4*300/W):2;k0=Math.min(k0,Math.sqrt(12e6/(W*Hn)));if(mw)k0=Math.min(k0,mw/W);
  var cv=document.createElement('canvas');cv.width=Math.round(W*k0);cv.height=Math.round(Hn*k0);var x=cv.getContext('2d'),i,y;x.scale(k0,k0);
@@ -320,8 +320,9 @@ function render(mw){var fm=S.f||'png',sy=S.y||'c',bdm=S.bd||'x',deco=bdm!=='x',p
   var nameH=nm.length*pxn*1.35,G=(port?rd*(2+TOP[st]+BOT[st])+50:0)+nameH,y0=Math.max(56,(Hn-G)/2);
   if(port){var cy=y0+rd*(1+TOP[st]);drawPort(cm,cy,rd);ay=cy+rd*(1+BOT[st])+50;if(ay+nameH>Hn-56)ay=Hn-56-nameH}else ay=y0;
   x.fillStyle=PLc[2];x.textAlign='center';x.textBaseline='alphabetic';nm.forEach(function(q,i){x.fillText(q,cm,ay+pxn+i*pxn*1.35)})}
- y=Hl?Math.max(P,(Hn-60-qh-ph-res.tot)/2):P+10;
+ y=Hl?Math.max(P,(Hn-60-(S.z==='bc'?0:qh)-ph-res.tot)/2):P+10;
  if(ph){drawPort(W/2,Math.max(y+110,P+pTop),prd);y+=ph}
+ if(sidePort){var sr=70,se=psty==='p'?48:(psty==='c'?46:psty==='e'?44:8);drawPort(P+sr+se+8,Hn-P-sr-se,sr)}
  if(fold)cover();
  res.lay.forEach(function(s){var k=s.k,px=s.px,pd=s.pd;
   if(lab){x.font='700 24px "Noto Naskh Arabic",Arial';x.fillStyle=PL[3];x.textBaseline='middle';x.textAlign=S.l==='ar'?'right':'left';x.fillText(t.o[k],S.l==='ar'?Wc-P:P,y+10);y+=44}
