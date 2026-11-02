@@ -82,8 +82,9 @@ body[data-th=dark] .bar button{color:#10202f}
  <div><h1 id="t"></h1><p class="sub" id="s"></p></div>
  <button class="lg" id="lg" type="button"></button>
 </header>
-<div class="inp"><input id="n" type="text" maxlength="60" autocomplete="off" spellcheck="false"><button id="mic" class="mic" type="button" aria-pressed="false"></button></div>
-<input id="n2" type="text" maxlength="60" autocomplete="off" spellcheck="false" hidden>
+<div class="inp"><input id="n" type="text" maxlength="60" autocomplete="off" spellcheck="false" list="nl"><button id="mic" class="mic" type="button" aria-pressed="false"></button></div>
+<input id="n2" type="text" maxlength="60" autocomplete="off" spellcheck="false" list="nl" hidden>
+<datalist id="nl"></datalist>
 <div class="vrow"><label><span id="vlab"></span><select id="vl"><option value="ar-EG">العربية · مصر</option><option value="ar-SA">العربية · الخليج</option><option value="en-US">English</option></select></label></div>
 <p class="hint" id="vs" role="status" aria-live="polite"></p>
 <p class="hint" id="h"></p>
@@ -141,14 +142,19 @@ var EN=[['sh','𓈙','Ϣ','ش'],['ch','𓏏𓈙','Ϭ','تش'],['th','𓍿','Ⲑ'
 ['a','𓄿','Ⲁ','A'],['b','𓃀','Ⲃ','ب'],['c','𓎡','Ⲕ','ك'],['d','𓂧','Ⲇ','د'],['e','𓇋','Ⲉ','E'],['f','𓆑','Ⲫ','ف'],['g','𓎼','Ⲅ','ج'],['h','𓉔','Ϩ','ه'],['i','𓇋','Ⲓ','I'],
 ['j','𓆓','Ϫ','ج'],['k','𓎡','Ⲕ','ك'],['l','𓃭','Ⲗ','ل'],['m','𓅓','Ⲙ','م'],['n','𓈖','Ⲛ','ن'],['o','𓅱','Ⲟ','O'],['p','𓊪','Ⲡ','ب'],['q','𓈎','Ⲕ','ق'],['r','𓂋','Ⲣ','ر'],
 ['s','𓋴','Ⲥ','س'],['t','𓏏','Ⲧ','ت'],['u','𓅱','ⲞⲨ','U'],['v','𓆑','Ⲃ','ف'],['w','𓅱','ⲞⲨ','و'],['x','𓎡𓋴','Ⲝ','كس'],['y','𓇌','Ⲓ','ي'],['z','𓊃','Ⲍ','ز']];
-/* established church forms (Wikipedia: Coptic names; DBMNT): [Arabic, english variants, Coptic, display English] */
+/* church forms + biblical names cited in Coptic grammar examples: [Arabic, english variants, Coptic, display English] */
 var D=[['مينا','mina mena meena','ⲘⲎⲚⲀ','Mina'],['ميخائيل','michael mikhael mikael','ⲘⲒⲬⲀⲎⲖ','Michael'],['غبريال','gabriel','ⲄⲀⲂⲢⲒⲎⲖ','Gabriel'],
 ['مرقس','mark marcos','ⲘⲀⲢⲔⲞⲤ','Mark'],['بطرس','peter botros','ⲠⲈⲦⲢⲞⲤ','Peter'],['بولس','paul boules','ⲠⲀⲨⲖⲞⲤ','Paul'],['يوحنا','john youhanna','ⲒⲰϨⲀⲚⲚⲎⲤ','John'],
-['يوسف','joseph youssef yousef','ⲒⲰⲤⲎⲪ','Joseph'],['إبراهيم','ibrahim abraham','ⲀⲂⲢⲀϨⲀⲘ','Ibrahim'],['إسحاق','isaac ishak ishaq','ⲒⲤⲀⲀⲔ','Isaac'],['داود','david dawood daoud','ⲆⲀⲨⲈⲒⲆ','David'],
+['يوسف','joseph youssef yousef','ⲒⲰⲤⲎⲪ','Joseph'],['إبراهيم','ibrahim abraham','ⲀⲂⲢⲀϨⲀⲘ','Ibrahim'],['إسحاق','isaac ishak ishaq','ⲒⲤⲀⲀⲔ','Isaac'],['إسحق','isaac ishak ishaq','ⲒⲤⲀⲀⲔ','Isaac'],['داود','david dawood daoud','ⲆⲀⲨⲈⲒⲆ','David'],
 ['مريم','mary mariam maryam','ⲘⲀⲢⲒⲀ','Mary'],['جرجس','george gerges','ⲄⲈⲰⲢⲄⲒⲞⲤ','George'],['كيرلس','cyril kyrillos','ⲔⲨⲢⲒⲖⲖⲞⲤ','Cyril'],['محمد','muhammad mohamed mohammed','ⲘⲰϨⲀⲘⲘⲎⲆ','Muhammad'],
 ['بيشوي','bishoy pishoy','ⲠⲒϢⲰⲒ','Bishoy'],['شنودة','shenouda','ϢⲈⲚⲞⲨϮ','Shenouda'],['باسم','basem bassem','ⲂⲀⲤⲒⲘⲞⲤ','Basem'],['موريس','maurice morris','ⲘⲰⲢⲒⲤ','Maurice'],
 ['بنيامين','benjamin','ⲂⲈⲚⲒⲀⲘⲒⲚ','Benjamin'],['زكريا','zakaria zechariah','ⲌⲀⲬⲀⲢⲒⲀⲤ','Zechariah'],['فيكتور','victor','ⲂⲒⲔⲦⲰⲢ','Victor'],['دميانة','demiana damiana','ⲆⲀⲘⲒⲀⲚⲎ','Demiana'],
-['إيريني','irene','ⲈⲒⲢⲎⲚⲎ','Irene'],['تكلا','thecla tekla','ⲐⲈⲔⲖⲀ','Thecla'],['لبيب','labib','ⲖⲀⲂⲒⲂ','Labib'],['حبيب','habib','ϨⲀⲠⲒⲠ','Habib']];
+['إيريني','irene','ⲈⲒⲢⲎⲚⲎ','Irene'],['تكلا','thecla tekla','ⲐⲈⲔⲖⲀ','Thecla'],['لبيب','labib','ⲖⲀⲂⲒⲂ','Labib'],['حبيب','habib','ϨⲀⲠⲒⲠ','Habib'],
+['مارثا','martha','ⲘⲀⲢⲐⲀ','Martha'],['يعقوب','jacob yaqoub yaqub','ⲒⲀⲔⲰⲂ','Jacob'],['موسى','moses moussa musa moosa','ⲘⲰⲨⲤⲎⲤ','Moses'],['هارون','aaron haroun harun','ⲀⲢⲰⲚ','Aaron'],
+['يسوع','jesus yesua yasua','ⲒⲎⲤⲞⲨⲤ','Jesus'],['متى','matthew matta','ⲘⲀⲦⲐⲀⲒⲞⲤ','Matthew'],['لوقا','luke louka luka','ⲖⲞⲨⲔⲀⲤ','Luke'],['سليمان','solomon suleiman sulayman','ⲤⲞⲖⲞⲘⲰⲚ','Solomon'],
+['أليصابات','elizabeth elisabet','ⲈⲖⲒⲤⲀⲂⲈⲦ','Elizabeth'],['هابيل','abel habil','ⲀⲂⲈⲖ','Abel'],['قايين','cain qabil','ⲔⲀⲒⲚ','Cain'],['فيلبس','philip phillip philippos','ⲪⲒⲖⲒⲠⲠⲞⲤ','Philip'],
+['توما','thomas touma','ⲐⲰⲘⲀⲤ','Thomas'],['سمعان','simon simeon','ⲤⲒⲘⲰⲚ','Simon'],['حنة','hannah hanna hana','ϨⲀⲚⲚⲀ','Hannah'],['قيافا','caiaphas','ⲔⲀⲒⲀⲪⲀⲤ','Caiaphas'],
+['بيلاطس','pilate','ⲠⲒⲖⲀⲦⲞⲤ','Pilate'],['هيرودس','herod','ϨⲎⲢⲰⲆⲎⲤ','Herod']];
 var nA=function(s){return s.replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي')};
 var DM={};D.forEach(function(d){d[4]=d[3];DM[nA(d[0])]=d;d[1].split(' ').forEach(function(v){DM[v]=d})});
 function DF(){return{l:/^ar/i.test(navigator.language||'ar')?'ar':'en',o:{h:1,c:1,e:1,a:1},d:'h',cart:0,mir:0,bd:'x',cw:769,ch:1280}}var S=DF(),SITE=location.href.split('#')[0];
@@ -416,6 +422,7 @@ $('pd').onclick=function(){$('dl').click()};$('ps').onclick=function(){$('sh').c
 document.addEventListener('keydown',function(e){if(e.key==='Escape')$('pm').hidden=true});
 $('an').onclick=function(){$('n').value='';$('n2').value='';OV={};draw();$('n').focus();window.scrollTo(0,0)};
 var DEEPLINK=false;try{var qs=new URLSearchParams(location.search);if(qs.get('n')){$('n').value=qs.get('n').slice(0,60);if(qs.get('n2')){S.dual=1;$('n2').value=qs.get('n2').slice(0,60)}}}catch(e){}
+D.forEach(function(d){var o=document.createElement('option');o.value=d[0];$('nl').appendChild(o)});
 ui();
 
 })();
