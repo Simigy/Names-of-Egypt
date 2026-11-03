@@ -106,6 +106,16 @@ on a canvas card you can download, print or share. No server, no account, no tra
 إن أردت توسيع قاموس الأسماء: أضف الاسم في المصفوفة `D` داخل `index.html` بالشكل
 `['عربي','variants','ⲔⲞⲠⲦⲒⲔ','English']`، ويُفضَّل ذكر مصدر كل صيغة.
 
+## صور المعرض · Listing images
+
+`gallery/` فيه صور الإعلان (Fiverr) بمقاس **1280×769**:
+
+- `cards/` — بطاقات أصلية صُدِّرت من التطبيق (769×1280، بدون علامة مائية).
+- `fiverr-1.png` … `fiverr-3.png` — صور المعرض النهائية.
+- `compose.py` — سكربت Pillow يركّب الصور (يحتاج Pillow و`arabic_reshaper` و`python-bidi`).
+
+الصور دي للعرض فقط؛ أي بطاقة يستلمها العميل تُصدَّر من التطبيق نفسه بنفس المحرك.
+
 ## التشغيل والنشر · Run & deploy
 
 ```bash
