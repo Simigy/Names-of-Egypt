@@ -158,11 +158,20 @@ def main():
             "feats": ["حتى أربعة أسماء", "كل الخلفيات", "كل المقاسات مع ملف للطباعة", "تعديل أربع مرات", "تسليم أربعة أيام"],
             "hot": False
         },
+        {
+            "title": "باقة المعمودية",
+            "en": "CHURCH",
+            "price": "199",
+            "old": "395",
+            "currency": "جنيه",
+            "feats": ["خمسة أسماء", "خلفية موحدة", "ثلاثة مقاسات للطباعة والتوزيع", "تعديل ثلاث مرات", "تسليم خمسة أيام"],
+            "hot": False
+        },
     ]
 
-    card_w, card_h = 308, 420
-    gap = 22
-    total_w = card_w * 3 + gap * 2
+    card_w, card_h = 233, 420
+    gap = 14
+    total_w = card_w * 4 + gap * 3
     start_x = (W - total_w) // 2
     top_y = 212
 
@@ -187,40 +196,40 @@ def main():
 
         cx = x + card_w // 2
         if c["hot"]:
-            pill_w, pill_h = 150, 28
-            d.rounded_rectangle([cx - pill_w // 2, y - 14, cx + pill_w // 2, y + 14], radius=14, fill=(216, 186, 118, 255))
-            center_en(d, cx, y - 7, "MOST POPULAR", font(F_UI, 12), (10, 24, 42), 2)
+            pill_w, pill_h = 128, 26
+            d.rounded_rectangle([cx - pill_w // 2, y - 13, cx + pill_w // 2, y + 13], radius=13, fill=(216, 186, 118, 255))
+            center_en(d, cx, y - 6, "MOST POPULAR", font(F_UI, 10), (10, 24, 42), 2)
 
-        center_ar(d, cx, y + 28, c["title"], font(F_AR, 24), CREAM)
-        center_en(d, cx, y + 60, c["en"], font(F_UI, 12), GOLD, 3)
+        center_ar(d, cx, y + 28, c["title"], font(F_AR, 19), CREAM)
+        center_en(d, cx, y + 56, c["en"], font(F_UI, 11), GOLD, 2)
 
-        f_price = font(F_HEAD, 52)
-        f_cur = font(F_AR, 20)
+        f_price = font(F_HEAD, 42)
+        f_cur = font(F_AR, 17)
         cur_ar = ar(c["currency"])
-        f_old = font(F_UI, 18)
+        f_old = font(F_UI, 16)
         w_old = d.textlength(c["old"], font=f_old)
-        old_top = y + 78
+        old_top = y + 74
         d.text((cx - w_old/2, old_top), c["old"], font=f_old, fill=MUT)
-        d.line([cx - w_old/2 - 4, old_top+8, cx + w_old/2 + 4, old_top+8], fill=(200,64,47,255), width=2)
+        d.line([cx - w_old/2 - 4, old_top+7, cx + w_old/2 + 4, old_top+7], fill=(200,64,47,255), width=2)
 
         w_price = d.textlength(c["price"], font=f_price)
         w_cur = d.textlength(cur_ar, font=f_cur)
-        total_price_w = w_price + 8 + w_cur
+        total_price_w = w_price + 7 + w_cur
         sx = cx - total_price_w / 2
-        d.text((sx, y + 102), c["price"], font=f_price, fill=GOLD)
-        d.text((sx + w_price + 8, y + 132), cur_ar, font=f_cur, fill=MUT)
+        d.text((sx, y + 94), c["price"], font=f_price, fill=GOLD)
+        d.text((sx + w_price + 7, y + 122), cur_ar, font=f_cur, fill=MUT)
 
-        d.line([x + 32, y + 168, x + card_w - 32, y + 168], fill=(216, 186, 118, 60), width=1)
+        d.line([x + 24, y + 154, x + card_w - 24, y + 154], fill=(216, 186, 118, 60), width=1)
 
-        fy = y + 184
+        fy = y + 168
         for ft in c["feats"]:
-            f_ft = font(F_AR, 18)
+            f_ft = font(F_AR, 15)
             t_ar = ar(ft)
             w_ft = d.textlength(t_ar, font=f_ft)
-            text_x = cx + 92 - w_ft
-            d.ellipse([cx + 98, fy + 8, cx + 104, fy + 14], fill=GOLD)
+            text_x = cx + 78 - w_ft
+            d.ellipse([cx + 84, fy + 6, cx + 88, fy + 10], fill=GOLD)
             d.text((text_x, fy), t_ar, font=f_ft, fill=CREAM)
-            fy += 32
+            fy += 28
 
     # payment panel
     py = 656
