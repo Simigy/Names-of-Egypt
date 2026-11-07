@@ -119,11 +119,23 @@ def main():
     center_en(d, 540, 78, "PRICE LIST · EGYPT", font(F_UI, 13), GOLD, 3)
     center_ar(d, 540, 100, "أسعار البطاقات في مصر", font(F_AR, 40), CREAM)
 
+    # launch ribbon
+    def pill(cx, y, text, f, fg=None, w_pad=18, h_pad=8):
+        t = ar(text) if text.isascii() is False else text
+        # measure
+        w = d.textlength(t, font=f) + w_pad*2
+        h = f.size + h_pad*2
+        d.rounded_rectangle([cx-w/2, y, cx+w/2, y+h], radius=h//2, fill=(200,64,47,255))
+        d.text((cx-w/2 + w_pad, y+h_pad-2), t, font=f, fill=(255,255,255,255))
+        return h
+    pill(540, 148, "عرض افتتاحي - أول عشرة أوردرات", font(F_AR, 18))
+
     cards = [
         {
             "title": "بطاقة واحدة",
             "en": "BASIC",
-            "price": "79",
+            "price": "59",
+            "old": "79",
             "currency": "جنيه",
             "feats": ["اسم واحد", "خلفية واحدة", "صورة للطباعة والمشاركة", "تعديل مرتين", "تسليم يومين"],
             "hot": False
@@ -131,7 +143,8 @@ def main():
         {
             "title": "جاهزة للطباعة",
             "en": "POPULAR",
-            "price": "149",
+            "price": "119",
+            "old": "149",
             "currency": "جنيه",
             "feats": ["اسم واحد", "ثلاث خلفيات", "ثلاثة مقاسات مع ملف للطباعة", "تعديل ثلاث مرات", "تسليم ثلاثة أيام"],
             "hot": True
@@ -139,7 +152,8 @@ def main():
         {
             "title": "باقة العائلة",
             "en": "FAMILY",
-            "price": "249",
+            "price": "199",
+            "old": "249",
             "currency": "جنيه",
             "feats": ["حتى أربعة أسماء", "كل الخلفيات", "كل المقاسات مع ملف للطباعة", "تعديل أربع مرات", "تسليم أربعة أيام"],
             "hot": False
@@ -150,7 +164,7 @@ def main():
     gap = 22
     total_w = card_w * 3 + gap * 2
     start_x = (W - total_w) // 2
-    top_y = 200
+    top_y = 212
 
     for i, c in enumerate(cards):
         x = start_x + i * (card_w + gap)
@@ -177,18 +191,24 @@ def main():
             d.rounded_rectangle([cx - pill_w // 2, y - 14, cx + pill_w // 2, y + 14], radius=14, fill=(216, 186, 118, 255))
             center_en(d, cx, y - 7, "MOST POPULAR", font(F_UI, 12), (10, 24, 42), 2)
 
-        center_ar(d, cx, y + 30, c["title"], font(F_AR, 24), CREAM)
-        center_en(d, cx, y + 70, c["en"], font(F_UI, 12), GOLD, 3)
+        center_ar(d, cx, y + 28, c["title"], font(F_AR, 24), CREAM)
+        center_en(d, cx, y + 60, c["en"], font(F_UI, 12), GOLD, 3)
 
-        f_price = font(F_HEAD, 58)
+        f_price = font(F_HEAD, 52)
         f_cur = font(F_AR, 20)
         cur_ar = ar(c["currency"])
+        f_old = font(F_UI, 18)
+        w_old = d.textlength(c["old"], font=f_old)
+        old_top = y + 78
+        d.text((cx - w_old/2, old_top), c["old"], font=f_old, fill=MUT)
+        d.line([cx - w_old/2 - 4, old_top+8, cx + w_old/2 + 4, old_top+8], fill=(200,64,47,255), width=2)
+
         w_price = d.textlength(c["price"], font=f_price)
         w_cur = d.textlength(cur_ar, font=f_cur)
         total_price_w = w_price + 8 + w_cur
         sx = cx - total_price_w / 2
-        d.text((sx, y + 90), c["price"], font=f_price, fill=GOLD)
-        d.text((sx + w_price + 8, y + 124), cur_ar, font=f_cur, fill=MUT)
+        d.text((sx, y + 102), c["price"], font=f_price, fill=GOLD)
+        d.text((sx + w_price + 8, y + 132), cur_ar, font=f_cur, fill=MUT)
 
         d.line([x + 32, y + 168, x + card_w - 32, y + 168], fill=(216, 186, 118, 60), width=1)
 
@@ -235,7 +255,7 @@ def main():
     center_ar(d, 540, 906, "كل بطاقة تُجهز على اسمك وتُراجع قبل التسليم", font(F_AR, 17), (150, 168, 187))
     center_en(d, 540, 958, "SEND YOUR NAME ON WHATSAPP  ·  RECEIVE YOUR CARD", font(F_UI, 12), GOLD, 2)
 
-    out = os.path.join(HERE, "prices-egypt-square.png")
+    out = HERE + "/prices-egypt-square-launch.png"
     base.convert("RGB").save(out, "PNG", optimize=True)
     print(out, base.size, round(os.path.getsize(out) / 1048576, 2), "MB")
 
