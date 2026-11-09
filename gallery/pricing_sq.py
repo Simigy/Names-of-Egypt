@@ -20,8 +20,8 @@ F_BODY = r"C:\Windows\Fonts\constan.ttf"
 F_UI = r"C:\Windows\Fonts\segoeuib.ttf"
 F_AR = r"C:\Windows\Fonts\trado.ttf"
 
-INSTA = "01273546616"
-VF = "01003677386"
+INSTA = os.environ.get("NAMES_EGYPT_INSTAPAY")
+VF = os.environ.get("NAMES_EGYPT_VODAFONE_CASH")
 
 def vgrad(size, top, bot):
     w, h = size
@@ -241,22 +241,16 @@ def main():
     d = ImageDraw.Draw(base)
 
     center_ar(d, 540, py + 22, "الدفع مقدم", font(F_AR, 24), GOLD)
-    # two columns: InstaPay | Vodafone Cash  (numbers LTR)
-    col_cx = [300, 780]
-    # left: Insta
-    labels_en = ["InstaPay", "Vodafone Cash"]
-    numbers = [INSTA, VF]
-    for j, (cx, lab, num) in enumerate(zip(col_cx, labels_en, numbers)):
-        # label EN
-        center_en(d, cx, py + 66, lab, font(F_UI, 16), MUT, 2)
-        # number centered
-        f_num = font(F_UI, 34)
-        w_num = d.textlength(num, font=f_num)
-        d.text((cx - w_num / 2, py + 92), num, font=f_num, fill=CREAM)
-        # underline gold
-        d.line([cx - 70, py + 140, cx + 70, py + 140], fill=(216, 186, 118, 80), width=1)
-    # divider
-    d.line([540, py + 60, 540, py + 155], fill=(216, 186, 118, 50), width=1)
+    if INSTA and VF:
+        for cx, lab, num in zip([300, 780], ["InstaPay", "Vodafone Cash"], [INSTA, VF]):
+            center_en(d, cx, py + 66, lab, font(F_UI, 16), MUT, 2)
+            f_num = font(F_UI, 34)
+            w_num = d.textlength(num, font=f_num)
+            d.text((cx - w_num / 2, py + 92), num, font=f_num, fill=CREAM)
+            d.line([cx - 70, py + 140, cx + 70, py + 140], fill=(216, 186, 118, 80), width=1)
+        d.line([540, py + 60, 540, py + 155], fill=(216, 186, 118, 50), width=1)
+    else:
+        center_ar(d, 540, py + 92, "بيانات الدفع تُرسل على واتساب", font(F_AR, 28), CREAM)
 
     center_ar(d, 540, py + 158 - 16, "الطلب والتسليم واتساب فقط", font(F_AR, 19), GOLD)
 

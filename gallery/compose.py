@@ -218,7 +218,7 @@ def compose_two():
     d.text((72, yy), "SHOWN ON EACH CARD", font=font(F_UI, 12), fill=(150, 168, 187))
     d.text((72, yy + 26), "Hieroglyphs · Coptic · English · Arabic",
            font=font(F_BODY, 19), fill=CREAM)
-    d.text((72, 545), "Verified spellings · Portrait & landscape · Print or share",
+    d.text((72, 545), "Curated spellings · Portrait & landscape · Print or share",
            font=font(F_BODY, 17), fill=(150, 168, 187))
 
     card_shadow_floor(base, 950, 400, 470)

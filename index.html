@@ -11,14 +11,14 @@
 <meta property="og:title" content="اسمك في مصر القديمة · Your Name in Ancient Egypt">
 <meta property="og:description" content="Hieroglyphs, Coptic, Arabic and English cards for any name. هيروغليفية وقبطية لأي اسم.">
 <meta property="og:type" content="website"><meta name="twitter:card" content="summary">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha384-JcnsjUPPylna1s1fvi1u12X5qjY5OL56iySh75FdtrwhO/SWXgMjoVqcKyIIWOLk" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha384-3zSEDfvllQohrq0PHL1fOXJuC/jSOO34H46t6UQfobFOmxE5BpjjaIJY5F2/bMnU" crossorigin="anonymous"></script>
 <style>
-:root{--bg:#e6eae8;--fg:#1d2a33;--mut:#5a6872;--lap:#1f4e8c;--ink:#2b2118;--pap1:#ecd9a6;--pap2:#d6b977;--ln:#b9c3c3;--in:#fff;
+:root{--bg:#e6eae8;--fg:#1d2a33;--mut:#5a6872;--lap:#1f4e8c;--btn:#fff;--ink:#2b2118;--pap1:#ecd9a6;--pap2:#d6b977;--ln:#b9c3c3;--in:#fff;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121c26;--fg:#e8eef2;--mut:#9fb0bb;--lap:#7fb0ee;--ln:#2c3d4b;--in:#1b2834}}
-:root[data-theme="dark"]{--bg:#121c26;--fg:#e8eef2;--mut:#9fb0bb;--lap:#7fb0ee;--ln:#2c3d4b;--in:#1b2834}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121c26;--fg:#e8eef2;--mut:#9fb0bb;--lap:#7fb0ee;--btn:#10202f;--ln:#2c3d4b;--in:#1b2834}}
+:root[data-theme="dark"]{--bg:#121c26;--fg:#e8eef2;--mut:#9fb0bb;--lap:#7fb0ee;--btn:#10202f;--ln:#2c3d4b;--in:#1b2834}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Noto Naskh Arabic",Tahoma,sans-serif}
@@ -71,8 +71,7 @@ main[data-bg=x] .card{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)
 .en{font:600 1.8rem/1.4 Cinzel,Georgia,serif}
 .ar{font:700 2rem/1.6 "Noto Naskh Arabic",serif}
 .bar{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0}
-.bar button{flex:1;min-height:46px;border:0;border-radius:10px;background:var(--lap);color:#fff;font-weight:700;cursor:pointer}
-body[data-th=dark] .bar button{color:#10202f}
+.bar button{flex:1;min-height:46px;border:0;border-radius:10px;background:var(--lap);color:var(--btn);font-weight:700;cursor:pointer}
 .bar button:disabled{opacity:.45;cursor:default}
 .note{color:var(--mut);font-size:.85rem;margin-top:14px}
 .empty{color:var(--mut);text-align:center;padding:26px 0}
@@ -118,7 +117,7 @@ var BR='اسمك في مصر القديمة · Names of Egypt';
 var TX={ar:{t:'اسمك في مصر القديمة',s:'هيروغليفية وقبطية وإنجليزية وعربية، لكل كلمة في الاسم.',ph:'اكتب الاسم بالعربية أو الإنجليزية',
 h:'للأسماء المركّبة اكتب الاسم الكامل (مثل: مينا محسن إبراهيم). للدقة في القبطية اكتب الاسم مشكولاً أو بحروف لاتينية.',lo:'عرض النتائج',
 o:{h:'الهيروغليفية',c:'القبطية',e:'الإنجليزية',a:'العربية'},ld:'الشكل',dh:'أفقي',dv:'رأسي',lc:'إطار الخرطوش',lm:'القراءة من اليسار',
-dl:'تحميل صورة',sh:'مشاركة',mic:'تسجيل صوتي',ck:'تأكيد الاسم وتصحيحه',ckh:'الخانتان تعرضان قراءتنا لكل كلمة. صحّح العربية أو الإنجليزية وستتحدّث النتائج.',gs:'تقديري، يُراجع',ok:'صيغة متعارف عليها',mine:'كتابتك أنت',ldc:'استخدم الصيغ الكنسية الشائعة للأسماء المعروفة',lbg:'الخلفية',bgp:'بردي',bgg:'ذهبي',bgs:'فضي',bgl:'لازوردي',ldl:'خيارات التحميل',csh:'العرض والارتفاع بالبكسل (200–4000)',szhAuto:'يُحدَّد تلقائيًا حسب المحتوى',lsl:'كل الأسماء في سطر واحد',zp:'تحميل حزمة ZIP (4 مقاسات)',rs:'استعادة الإعدادات الافتراضية',an:'اعمل بطاقة لصاحبك',pv:'معاينة',pt:'معاينة البطاقة',pwait:'جارٍ التحضير…',lim:'صور اختيارية (تبقى على جهازك ولا تُرفع)',lpc:'أوافق على استخدام هذه الصورة في بطاقتي. تُعالَج على جهازك فقط ولا تُرفع إلى أي سيرفر، وأقرّ بأن لي حق استخدامها أو أن معي إذن صاحبها.',lbf:'خلفية من صورتك:',lpf:'صورة شخصية (يفضّل PNG شفاف):',bcl:'مسح الصور',lps:'شكل الصورة الشخصية:',pst:[['n','بدون'],['e','إطار مصري'],['p','حلقة هيروغليفية + عنخ'],['c','إطار قبطي']],lbd:'إطار الزينة',bd:[['x','بدون'],['eg','هيروغليفي'],['co','قبطي — صليب']],dlfb:'تم تنزيل الصورة، أرفقها يدوياً في تطبيق المشاركة',big:'الصورة كبيرة (أكثر من 8MB)',bad:'تعذّر فتح الصورة',lqr:'رمز QR للموقع في ركن الصورة',lwm:'نسخة معاينة بعلامة مائية (لكل التنزيلات)',ldu:'بطاقة مزدوجة (اسمان)',ph2:'الاسم الثاني',lfm:'الصيغة',lsz:'المقاس',lsy:'شكل البطاقة',
+dl:'تحميل صورة',sh:'مشاركة',mic:'تسجيل صوتي',ck:'تأكيد الاسم وتصحيحه',ckh:'الخانتان تعرضان قراءتنا لكل كلمة. صحّح العربية أو الإنجليزية وستتحدّث النتائج.',gs:'تقديري، يُراجع',ok:'صيغة من القاموس',mine:'كتابتك أنت',ldc:'استخدم صيغ القاموس للأسماء المعروفة',lbg:'الخلفية',bgp:'بردي',bgg:'ذهبي',bgs:'فضي',bgl:'لازوردي',ldl:'خيارات التحميل',csh:'العرض والارتفاع بالبكسل (200–4000)',szhAuto:'يُحدَّد تلقائيًا حسب المحتوى',lsl:'كل الأسماء في سطر واحد',zp:'تحميل حزمة ZIP (4 مقاسات)',rs:'استعادة الإعدادات الافتراضية',an:'اعمل بطاقة لصاحبك',pv:'معاينة',pt:'معاينة البطاقة',pwait:'جارٍ التحضير…',lim:'صور اختيارية (تبقى على جهازك ولا تُرفع)',lpc:'أوافق على استخدام هذه الصورة في بطاقتي. تُعالَج على جهازك فقط ولا تُرفع إلى أي سيرفر، وأقرّ بأن لي حق استخدامها أو أن معي إذن صاحبها.',lbf:'خلفية من صورتك:',lpf:'صورة شخصية (يفضّل PNG شفاف):',bcl:'مسح الصور',lps:'شكل الصورة الشخصية:',pst:[['n','بدون'],['e','إطار مصري'],['p','حلقة هيروغليفية + عنخ'],['c','إطار قبطي']],lbd:'إطار الزينة',bd:[['x','بدون'],['eg','هيروغليفي'],['co','قبطي — صليب']],dlfb:'تم تنزيل الصورة، أرفقها يدوياً في تطبيق المشاركة',big:'الصورة كبيرة (أكثر من 8MB)',bad:'تعذّر فتح الصورة',er2:'تعذّر إنشاء الملف. جرّب صيغة PNG أو أعد تحميل الصفحة.',lqr:'رمز QR للموقع في ركن الصورة',lwm:'نسخة معاينة بعلامة مائية (لكل التنزيلات)',ldu:'بطاقة مزدوجة (اسمان)',ph2:'الاسم الثاني',lfm:'الصيغة',lsz:'المقاس',lsy:'شكل البطاقة',
 fm:[['png','PNG'],['pngt','PNG شفاف بلا خلفية'],['jpg','JPG'],['pdf','PDF للطباعة']],
 sz:[['auto','تلقائي حسب المحتوى'],['sq','مربع للسوشيال 1080×1080'],['st','ستوري 1080×1920'],['ig','بوست إنستجرام 1080×1350'],['wq','خلفية موبايل 1440×3120'],['pxv','769×1280 بكسل'],['pxh','1280×769 بكسل'],['cus','مقاس مخصص بالبكسل'],['c57','بطاقة معايدة 13×18 سم'],['a5','A5'],['a4','A4 غلاف أو بوستر'],['a4p','A4 طباعة 2480×3508 (300 DPI)'],['bc','كارت شخصي 9×5 سم'],['pl','خرطوشة أو ميدالية 5×10 سم'],['plh','خرطوشة أفقية 10×5 سم'],['fold','بطاقة معايدة مطوية A4 أفقي'],['bn','بانر عريض 3:1']],
 sy:[['c','كلاسيكي بعناوين'],['n','نظيف بلا عناوين'],['o','هيروغليفي فقط'],['f','مؤطَّر مزدوج']],vl:'لغة الصوت',lis:'جارٍ الاستماع… انطق الاسم ثم توقف.',done:'تمت الكتابة. عدّل الاسم في الخانة إن لزم.',ns:'متصفحك لا يدعم التعرف على الصوت. جرّب Chrome أو Safari.',den:'المتصفح لا يسمح بالميكروفون. فعّله من إعدادات الموقع.',err:'لم نسمع بوضوح. حاول مرة أخرى.',ls:'استمع للنطق',vd:'التعرف على الصوت تتولاه خدمة المتصفح وقد يُرسل التسجيل إلى خوادمها. نحن لا نخزّن أي صوت.',em:'اكتب اسمك لتظهر النتيجة.',lg:'English',
@@ -126,7 +125,7 @@ nt:'نقل صوتي تقريبي وليس ترجمة رسمية. الحروف ا
 en:{t:'Your Name in Ancient Egypt',s:'Hieroglyphs, Coptic, English and Arabic — one block per word of your name.',ph:'Type a name in English or Arabic',
 h:'Write the full name for multi-word names (e.g. Mina Mohsen Ibrahim). For best Coptic accuracy, spell it phonetically.',lo:'Show results',
 o:{h:'Hieroglyphs',c:'Coptic',e:'English',a:'Arabic'},ld:'Layout',dh:'Horizontal',dv:'Vertical',lc:'Cartouche frame',lm:'Read left to right',
-dl:'Download image',sh:'Share',mic:'Voice input',ck:'Check and correct the name',ckh:'These boxes show our reading of each word. Correct the Arabic or English and the results update.',gs:'guessed, please check',ok:'common form',mine:'your spelling',ldc:'Use common church forms for known names',lbg:'Background',bgp:'Papyrus',bgg:'Gold',bgs:'Silver',bgl:'Lapis lazuli',ldl:'Download options',csh:'Width and height in pixels (200–4000)',szhAuto:'Fits the content automatically',lsl:'All names on one line',zp:'Download ZIP pack (4 sizes)',rs:'Reset to default settings',an:'Make a card for a friend',pv:'Preview',pt:'Card preview',pwait:'Preparing…',lim:'Optional images (stay on your device, never uploaded)',lpc:'I agree to use this image in my card. It is processed only on your device and never uploaded, and I confirm I have the right to use it or the owner\'s permission.',lbf:'Your own background:',lpf:'Portrait (transparent PNG works best):',bcl:'Clear images',lps:'Portrait style:',pst:[['n','None'],['e','Egyptian frame'],['p','Hieroglyphic ring + ankh'],['c','Coptic frame']],lbd:'Decoration frame',bd:[['x','None'],['eg','Hieroglyphic'],['co','Coptic (cross)']],dlfb:'Image downloaded. Attach it in your sharing app.',big:'Image too large (over 8MB)',bad:'Could not open the image',lqr:'Site QR code in the corner',lwm:'Preview copy with watermark (applies to all downloads)',ldu:'Dual card (two names)',ph2:'Second name',lfm:'Format',lsz:'Size',lsy:'Card style',
+dl:'Download image',sh:'Share',mic:'Voice input',ck:'Check and correct the name',ckh:'These boxes show our reading of each word. Correct the Arabic or English and the results update.',gs:'guessed, please check',ok:'dictionary form',mine:'your spelling',ldc:'Use dictionary forms for known names',lbg:'Background',bgp:'Papyrus',bgg:'Gold',bgs:'Silver',bgl:'Lapis lazuli',ldl:'Download options',csh:'Width and height in pixels (200–4000)',szhAuto:'Fits the content automatically',lsl:'All names on one line',zp:'Download ZIP pack (4 sizes)',rs:'Reset to default settings',an:'Make a card for a friend',pv:'Preview',pt:'Card preview',pwait:'Preparing…',lim:'Optional images (stay on your device, never uploaded)',lpc:'I agree to use this image in my card. It is processed only on your device and never uploaded, and I confirm I have the right to use it or the owner\'s permission.',lbf:'Your own background:',lpf:'Portrait (transparent PNG works best):',bcl:'Clear images',lps:'Portrait style:',pst:[['n','None'],['e','Egyptian frame'],['p','Hieroglyphic ring + ankh'],['c','Coptic frame']],lbd:'Decoration frame',bd:[['x','None'],['eg','Hieroglyphic'],['co','Coptic (cross)']],dlfb:'Image downloaded. Attach it in your sharing app.',big:'Image too large (over 8MB)',bad:'Could not open the image',er2:'Could not create the file. Try PNG or reload the page.',lqr:'Site QR code in the corner',lwm:'Preview copy with watermark (applies to all downloads)',ldu:'Dual card (two names)',ph2:'Second name',lfm:'Format',lsz:'Size',lsy:'Card style',
 fm:[['png','PNG'],['pngt','Transparent PNG'],['jpg','JPG'],['pdf','Print-ready PDF']],
 sz:[['auto','Auto (fit content)'],['sq','Square 1080×1080'],['st','Story 1080×1920'],['ig','Instagram post 1080×1350'],['wq','Phone wallpaper 1440×3120'],['pxv','769×1280 px'],['pxh','1280×769 px'],['cus','Custom size in pixels'],['c57','Greeting card 13×18 cm'],['a5','A5'],['a4','A4 cover / poster'],['a4p','A4 print 2480×3508 (300 DPI)'],['bc','Business card 9×5 cm'],['pl','Cartouche pendant 5×10 cm'],['plh','Cartouche plaque 10×5 cm'],['fold','Folded greeting card, A4 landscape'],['bn','Wide banner 3:1']],
 sy:[['c','Classic with labels'],['n','Clean, no labels'],['o','Hieroglyphs only'],['f','Double frame']],vl:'Voice language',lis:'Listening… say the name, then stop.',done:'Done. Edit the name in the box if needed.',ns:'Your browser does not support voice recognition. Try Chrome or Safari.',den:'The browser blocked the microphone. Allow it in site settings.',err:'We could not hear clearly. Please try again.',ls:'Hear the name',vd:'Voice recognition is handled by your browser and may send the recording to its servers. We store no audio.',em:'Type your name to see the result.',lg:'العربية',
@@ -134,25 +133,25 @@ nt:'A phonetic approximation, not an official translation. Emphatic and guttural
 /* hieroglyph + Coptic maps for Arabic letters: [hieroglyph, Coptic] */
 var AR={'ا':['𓄿','Ⲁ'],'أ':['𓄿','Ⲁ'],'آ':['𓄿','Ⲁ'],'ء':['𓄿',''],'ى':['𓄿','Ⲁ'],'إ':['𓇋','Ⲓ'],'ئ':['𓇌','Ⲓ'],'ؤ':['𓅱','ⲞⲨ'],
 'ب':['𓃀','Ⲃ'],'پ':['𓊪','Ⲡ'],'ت':['𓏏','Ⲧ'],'ة':['𓏏','Ⲁ'],'ث':['𓍿','Ⲑ'],'ج':['𓎼','Ϫ'],'چ':['𓆓','Ϭ'],'ح':['𓎛','Ϩ'],'خ':['𓐍','Ϧ'],
-'د':['𓂧','Ⲇ'],'ذ':['𓊃','Ⲍ'],'ر':['𓂋','Ⲣ'],'ز':['𓊃','Ⲍ'],'س':['𓋴','Ⲥ'],'ش':['𓈙','Ϣ'],'ص':['𓋴','Ⲥ'],'ض':['𓂧','Ⲇ'],'ط':['𓏏','Ⲧ'],
+'د':['𓂧','Ⲇ'],'ذ':['𓂧','Ⲇ'],'ر':['𓂋','Ⲣ'],'ز':['𓊃','Ⲍ'],'س':['𓋴','Ⲥ'],'ش':['𓈙','Ϣ'],'ص':['𓋴','Ⲥ'],'ض':['𓂧','Ⲇ'],'ط':['𓏏','Ⲧ'],
 'ظ':['𓊃','Ⲍ'],'ع':['𓂝','Ⲁ'],'غ':['𓄡','Ⲅ'],'ف':['𓆑','Ⲫ'],'ڤ':['𓆑','Ⲃ'],'ق':['𓈎','Ⲕ'],'ك':['𓎡','Ⲕ'],'ل':['𓃭','Ⲗ'],'م':['𓅓','Ⲙ'],
 'ن':['𓈖','Ⲛ'],'ه':['𓉔','Ϩ'],'و':['𓅱','ⲞⲨ'],'ي':['𓇌','Ⲓ']};
 var VW='اأإآءىئؤويةع';
 var A2E={'ا':'a','أ':'a','إ':'i','آ':'a','ء':'','ى':'a','ئ':'i','ؤ':'u','ب':'b','پ':'p','ت':'t','ة':'a','ث':'th','ج':'j','چ':'ch','ح':'h','خ':'kh','د':'d','ذ':'dh','ر':'r','ز':'z','س':'s','ش':'sh','ص':'s','ض':'d','ط':'t','ظ':'z','ع':'a','غ':'gh','ف':'f','ڤ':'v','ق':'q','ك':'k','ل':'l','م':'m','ن':'n','ه':'h','و':'u','ي':'i'};
 /* English graphemes: [pattern, hieroglyph, Coptic, Arabic] */
-var EN=[['sh','𓈙','Ϣ','ش'],['ch','𓏏𓈙','Ϭ','تش'],['th','𓍿','Ⲑ','ث'],['kh','𓐍','Ϧ','خ'],['ph','𓆑','Ⲫ','ف'],['gh','𓄡','Ⲅ','غ'],['ee','𓇋','Ⲏ','ي'],['ea','𓇋','Ⲏ','ي'],['oo','𓅱','ⲞⲨ','و'],['ou','𓅱','ⲞⲨ','و'],
+var EN=[['sh','𓈙','Ϣ','ش'],['ch','𓏏𓈙','Ϭ','تش'],['th','𓍿','Ⲑ','ث'],['dh','𓂧','Ⲇ','ذ'],['kh','𓐍','Ϧ','خ'],['ph','𓆑','Ⲫ','ف'],['gh','𓄡','Ⲅ','غ'],['ee','𓇋','Ⲏ','ي'],['ea','𓇋','Ⲏ','ي'],['oo','𓅱','ⲞⲨ','و'],['ou','𓅱','ⲞⲨ','و'],
 ['a','𓄿','Ⲁ','A'],['b','𓃀','Ⲃ','ب'],['c','𓎡','Ⲕ','ك'],['d','𓂧','Ⲇ','د'],['e','𓇋','Ⲉ','E'],['f','𓆑','Ⲫ','ف'],['g','𓎼','Ⲅ','ج'],['h','𓉔','Ϩ','ه'],['i','𓇋','Ⲓ','I'],
 ['j','𓆓','Ϫ','ج'],['k','𓎡','Ⲕ','ك'],['l','𓃭','Ⲗ','ل'],['m','𓅓','Ⲙ','م'],['n','𓈖','Ⲛ','ن'],['o','𓅱','Ⲟ','O'],['p','𓊪','Ⲡ','ب'],['q','𓈎','Ⲕ','ق'],['r','𓂋','Ⲣ','ر'],
 ['s','𓋴','Ⲥ','س'],['t','𓏏','Ⲧ','ت'],['u','𓅱','ⲞⲨ','U'],['v','𓆑','Ⲃ','ف'],['w','𓅱','ⲞⲨ','و'],['x','𓎡𓋴','Ⲝ','كس'],['y','𓇌','Ⲓ','ي'],['z','𓊃','Ⲍ','ز']];
-/* church forms + biblical names cited in Coptic grammar examples: [Arabic, english variants, Coptic, display English] */
+/* Curated biblical, church and phonetic name forms: [Arabic, English variants, Coptic, display English] */
 var D=[['مينا','mina mena meena','ⲘⲎⲚⲀ','Mina'],['ميخائيل','michael mikhael mikael','ⲘⲒⲬⲀⲎⲖ','Michael'],['غبريال','gabriel','ⲄⲀⲂⲢⲒⲎⲖ','Gabriel'],
 ['مرقس','mark marcos','ⲘⲀⲢⲔⲞⲤ','Mark'],['بطرس','peter botros','ⲠⲈⲦⲢⲞⲤ','Peter'],['بولس','paul boules','ⲠⲀⲨⲖⲞⲤ','Paul'],['يوحنا','john youhanna','ⲒⲰϨⲀⲚⲚⲎⲤ','John'],
 ['يوسف','joseph youssef yousef','ⲒⲰⲤⲎⲪ','Joseph'],['إبراهيم','ibrahim abraham','ⲀⲂⲢⲀϨⲀⲘ','Ibrahim'],['إسحاق','isaac ishak ishaq','ⲒⲤⲀⲀⲔ','Isaac'],['إسحق','isaac ishak ishaq','ⲒⲤⲀⲀⲔ','Isaac'],['داود','david dawood daoud','ⲆⲀⲨⲈⲒⲆ','David'],
 ['مريم','mary mariam maryam','ⲘⲀⲢⲒⲀ','Mary'],['جرجس','george gerges','ⲄⲈⲰⲢⲄⲒⲞⲤ','George'],['كيرلس','cyril kyrillos','ⲔⲨⲢⲒⲖⲖⲞⲤ','Cyril'],['محمد','muhammad mohamed mohammed','ⲘⲰϨⲀⲘⲘⲎⲆ','Muhammad'],
-['بيشوي','bishoy pishoy','ⲠⲒϢⲰⲒ','Bishoy'],['شنودة','shenouda','ϢⲈⲚⲞⲨϮ','Shenouda'],['باسم','basem bassem','ⲂⲀⲤⲒⲘⲞⲤ','Basem'],['موريس','maurice morris','ⲘⲰⲢⲒⲤ','Maurice'],
+['بيشوي','bishoy pishoy','ⲠⲒϢⲰⲒ','Bishoy'],['شنودة','shenouda shenoute','ϢⲈⲚⲞⲨⲦⲈ','Shenouda'],['باسم','basem bassem','ⲂⲀⲤⲈⲘ','Basem'],['موريس','maurice morris','ⲘⲰⲢⲒⲤ','Maurice'],
 ['بنيامين','benjamin','ⲂⲈⲚⲒⲀⲘⲒⲚ','Benjamin'],['زكريا','zakaria zechariah','ⲌⲀⲬⲀⲢⲒⲀⲤ','Zechariah'],['فيكتور','victor','ⲂⲒⲔⲦⲰⲢ','Victor'],['دميانة','demiana damiana','ⲆⲀⲘⲒⲀⲚⲎ','Demiana'],
-['إيريني','irene','ⲈⲒⲢⲎⲚⲎ','Irene'],['تكلا','thecla tekla','ⲐⲈⲔⲖⲀ','Thecla'],['لبيب','labib','ⲖⲀⲂⲒⲂ','Labib'],['حبيب','habib','ϨⲀⲠⲒⲠ','Habib'],
-['مارثا','martha','ⲘⲀⲢⲐⲀ','Martha'],['يعقوب','jacob yaqoub yaqub','ⲒⲀⲔⲰⲂ','Jacob'],['موسى','moses moussa musa moosa','ⲘⲰⲨⲤⲎⲤ','Moses'],['هارون','aaron haroun harun','ⲀⲢⲰⲚ','Aaron'],
+['إيريني','irene','ⲈⲒⲢⲎⲚⲎ','Irene'],['تكلا','thecla tekla','ⲐⲈⲔⲖⲀ','Thecla'],['لبيب','labib','ⲖⲀⲂⲒⲂ','Labib'],['حبيب','habib','ϨⲀⲂⲒⲂ','Habib'],
+['مارثا','martha','ⲘⲀⲢⲐⲀ','Martha'],['يعقوب','jacob yaqoub yaqub','ⲒⲀⲔⲰⲂ','Jacob'],['موسى','moses moussa musa moosa','ⲘⲰⲨⲤⲎⲤ','Moses'],['هارون','aaron haroun harun','ⲀⲀⲢⲰⲚ','Aaron'],
 ['يسوع','jesus yesua yasua','ⲒⲎⲤⲞⲨⲤ','Jesus'],['متى','matthew matta','ⲘⲀⲦⲐⲀⲒⲞⲤ','Matthew'],['لوقا','luke louka luka','ⲖⲞⲨⲔⲀⲤ','Luke'],['سليمان','solomon suleiman sulayman','ⲤⲞⲖⲞⲘⲰⲚ','Solomon'],
 ['أليصابات','elizabeth elisabet','ⲈⲖⲒⲤⲀⲂⲈⲦ','Elizabeth'],['هابيل','abel habil','ⲀⲂⲈⲖ','Abel'],['قايين','cain qabil','ⲔⲀⲒⲚ','Cain'],['فيلبس','philip phillip philippos','ⲪⲒⲖⲒⲠⲠⲞⲤ','Philip'],
 ['توما','thomas touma','ⲐⲰⲘⲀⲤ','Thomas'],['سمعان','simon simeon','ⲤⲒⲘⲰⲚ','Simon'],['حنة','hannah hanna hana','ϨⲀⲚⲚⲀ','Hannah'],['قيافا','caiaphas','ⲔⲀⲒⲀⲪⲀⲤ','Caiaphas'],
@@ -187,8 +186,8 @@ function tokEn(w){var out=[],i=0,p,m,j,prev='';w=w.toLowerCase().replace(/[^a-z]
 function arFromEn(t){var V='AEIOU';return t.map(function(x,j){var a=x.a,pv=t[j-1],nx=t[j+1];
  if(a==='ه'&&pv&&V.indexOf(pv.a)>=0&&nx&&V.indexOf(nx.a)<0)return'ح';
  if(a==='A')return x.first?'أ':(x.last?'ا':'');if(a==='E')return x.first?'إ':'';if(a==='I')return x.first?'إ':'ي';if(a==='O')return x.first?'أ':'و';if(a==='U')return x.first?'أ':'و';return a}).join('')}
-function conv(raw){return raw.trim().split(/\s+/).filter(Boolean).map(function(w0){
- var o=OV[w0]||{},isA=/[\u0600-\u06FF]/.test(w0),lkA=isA||!!o.ar,lkE=!isA||!!o.en,ar=o.ar||(isA?w0:''),en=o.en||(isA?'':w0),ha,he,hs,cs,d,c,h;
+function conv(raw,slot){return raw.trim().split(/\s+/).filter(Boolean).map(function(w0,wi){
+ var key=slot+':'+wi+':'+w0,o=OV[key]||{},isA=/[\u0600-\u06FF]/.test(w0),lkA=isA||!!o.ar,lkE=!isA||!!o.en,ar=o.ar||(isA?w0:''),en=o.en||(isA?'':w0),ha,he,hs,cs,d,c,h;
  if(!ar)ar=arFromEn(tokEn(en));
  if(!en){en=tokAr(ar).map(function(x){return x.e}).join('');en=en.charAt(0).toUpperCase()+en.slice(1)}
  ha=/[\u0600-\u06FF]/.test(ar)?tokAr(ar):[];he=/[a-z]/i.test(en)?tokEn(en):[];
@@ -197,17 +196,17 @@ function conv(raw){return raw.trim().split(/\s+/).filter(Boolean).map(function(w
  if(!hs.length)hs=ha.length?ha:he;if(!cs.length)cs=he.length?he:ha;
  if(d){if(!lkA){ar=d[0];hs=tokAr(ar)}if(!lkE)en=d[3]}
  h=hs.map(function(x){return x.h}).join('');c=(d&&S.dc!==0)?d[2]:cs.map(function(x){return x.c}).join('');
- return{ar:ar,en:en,h:Array.from(h),c:c,k:w0,dk:!!d,lkA:lkA,lkE:lkE}})}
+ return{ar:ar,en:en,h:Array.from(h),c:c,k:key,dk:!!d,lkA:lkA,lkE:lkE}})}
 var cap=function(s){return s.charAt(0).toUpperCase()+s.slice(1)};
 var CNAVY='#1b2a86',CGOLD='#f0b429',CCREAM='#fdf8ea',CRED='#c8402f',EGLY=['𓂀','𓋹','𓆣','𓇳','𓅓','𓆓','𓊽','𓈖','𓁹','𓏏'];
 var cBg=null,cBgU='',port=null,portU='',words=[],OV={},words2=[],all=[],SEP={sep:1,ar:'و',en:'&',c:'&',h:[String.fromCodePoint(0x132F9)],k:'§',dk:1,lkA:1,lkE:1};
-function build(){words=conv($('n').value);words2=S.dual?conv($('n2').value):[];all=words.concat(words2.length?[SEP]:[],words2)}
+function build(){words=conv($('n').value,'1');words2=S.dual?conv($('n2').value,'2'):[];all=words.concat(words2.length?[SEP]:[],words2)}
 function L(){return TX[S.l]}
 function ui(){var t=L();document.documentElement.lang=S.l;document.documentElement.dir=S.l==='ar'?'rtl':'ltr';document.body.dataset.l=S.l;
  $('t').textContent=t.t;$('s').textContent=t.s;$('n').placeholder=t.ph;$('h').textContent=t.h;$('lo').textContent=t.lo;$('ld').textContent=t.ld;
  $('dh').textContent=t.dh;$('dv').textContent=t.dv;$('lc').textContent=t.lc;$('lm').textContent=t.lm;$('dl').textContent=t.dl;$('sh').textContent=t.sh;$('nt').textContent=t.nt;$('lg').textContent=t.lg;$('mic').textContent='🎤 '+t.mic;$('mic').setAttribute('aria-label',t.mic);$('ls').textContent='🔊 '+t.ls;$('pv').textContent=t.pv;$('vlab').textContent=t.vl;$('vl').value=S.vl||(S.l==='ar'?'ar-EG':'en-US');
  document.title=t.t;var o=$('outs');o.textContent='';
- ['h','c','e','a'].forEach(function(k){var lb=document.createElement('label'),cb=document.createElement('input');cb.type='checkbox';cb.checked=!!S.o[k];
+ ['h','c','e','a'].forEach(function(k){var lb=document.createElement('label'),cb=document.createElement('input');cb.type='checkbox';cb.id='out-'+k;cb.checked=!!S.o[k];
   cb.onchange=function(){S.o[k]=cb.checked?1:0;save();draw()};lb.appendChild(cb);lb.appendChild(document.createTextNode(t.o[k]));o.appendChild(lb)});
  document.querySelectorAll('input[name=d]').forEach(function(r){r.checked=r.value===S.d});$('cart').checked=!!S.cart;$('mir').checked=!!S.mir;$('ldc').textContent=t.ldc;$('lbg').textContent=t.lbg;$('dc').checked=S.dc!==0;var bo=$('bg').options;bo[0].text=t.bgp;bo[1].text=t.bgg;bo[2].text=t.bgs;bo[3].text=t.bgl;$('bg').value=S.bg||'p';document.querySelector('main').dataset.bg=cBg?'x':(S.bg||'p');
  $('ldl').textContent=t.ldl;$('lfm').textContent=t.lfm;$('lsz').textContent=t.lsz;$('lsy').textContent=t.lsy;$('lsl').textContent=t.lsl;$('zp').textContent=t.zp;$('rs').textContent=t.rs;$('pv').textContent='👁 '+t.pv;$('pvn').textContent=t.vd;$('pt').textContent=t.pt;$('pd').textContent=t.dl;$('ps').textContent=t.sh;$('lim').textContent=t.lim;$('lbf').textContent=t.lbf;$('lpf').textContent=t.lpf;$('bc').textContent=t.bcl;$('lps').textContent=t.lps;var pso=$('pst');pso.textContent='';t.pst.forEach(function(o){var e=document.createElement('option');e.value=o[0];e.textContent=o[1];pso.appendChild(e)});pso.value=S.pst||'n';$('pst').parentNode.style.display='';$('lbd').textContent=t.lbd;var bdo=$('bd');bdo.textContent='';t.bd.forEach(function(o){var e=document.createElement('option');e.value=o[0];e.textContent=o[1];bdo.appendChild(e)});bdo.value=S.bd||'x';$('an').textContent=t.an;$('lqr').textContent=t.lqr;$('lwm').textContent=t.lwm;$('wm').checked=!!S.wm;$('lpc').textContent=t.lpc;$('csh').textContent=t.csh;imgGate();$('ldu').textContent=t.ldu;$('n2').placeholder=t.ph2;$('n2').hidden=!S.dual;$('du').checked=!!S.dual;$('qr').checked=!!S.qr;$('sl').checked=S.sl===undefined?['pl','bc','bn','plh'].indexOf(S.z||'auto')>=0:!!S.sl;
@@ -224,7 +223,7 @@ function corr(){var c=$('cr'),t=L();c.textContent='';if(!words.length)return;
  var box=document.createElement('fieldset'),lg=document.createElement('legend'),p=document.createElement('p');lg.textContent=t.ck;p.className='hint';p.textContent=t.ckh;box.appendChild(lg);box.appendChild(p);
  all.forEach(function(w,i){if(w.sep)return;var row=document.createElement('div'),tag=document.createElement('small'),a,e;row.className='cr';
   function tg(x){tag.textContent=x.dk?t.ok:(x.lkA&&x.lkE?t.mine:t.gs)}tg(w);
-  function inp(s,v){var x=document.createElement('input');x.type='text';x.value=v;x.dir=s==='ar'?'rtl':'ltr';x.maxLength=40;x.spellcheck=false;x.setAttribute('aria-label',(s==='ar'?t.o.a:t.o.e)+' '+(i+1));
+  function inp(s,v){var x=document.createElement('input');x.type='text';x.id='corr-'+s+'-'+i;x.value=v;x.dir=s==='ar'?'rtl':'ltr';x.maxLength=40;x.spellcheck=false;x.setAttribute('aria-label',(s==='ar'?t.o.a:t.o.e)+' '+(i+1));
    x.oninput=function(){var q=x.value.trim(),ov=OV[w.k]=OV[w.k]||{};if(q)ov[s]=q;else delete ov[s];
     build();var nw=all[i],oth=s==='ar'?e:a;if(!(s==='ar'?nw.lkE:nw.lkA))oth.value=s==='ar'?nw.en:nw.ar;tg(nw);res()};return x}
   a=inp('ar',w.ar);e=inp('en',w.en);row.appendChild(a);row.appendChild(e);row.appendChild(tag);box.appendChild(row)});
@@ -373,29 +372,31 @@ function render(mw){var fm=S.f||'png',sy=S.y||'c',bdm=S.bd||'x',deco=bdm!=='x',p
  if(ss>1){var fc=document.createElement('canvas');fc.width=Math.round(W*k0);fc.height=Math.round(Hn*k0);var fx=fc.getContext('2d');fx.imageSmoothingEnabled=true;fx.imageSmoothingQuality='high';fx.drawImage(cv,0,0,fc.width,fc.height);cv=fc}
  return{cv:cv,w:pr[0]&&!pr[2]?pr[0]:cv.width/300*25.4,h:pr[0]&&!pr[2]?pr[1]:cv.height/300*25.4}})}
 function blob(){return render().then(function(r){var f=S.f||'png',cv=r.cv;
- if(f==='pdf'){var J=window.jspdf&&window.jspdf.jsPDF;if(J){var d=new J({unit:'mm',format:[r.w,r.h],orientation:r.w>r.h?'l':'p'});d.addImage(cv.toDataURL('image/jpeg',.92),'JPEG',0,0,r.w,r.h);return{b:d.output('blob'),ext:'pdf',type:'application/pdf'}}}
- var ty=f==='jpg'?'image/jpeg':'image/png';return new Promise(function(ok){cv.toBlob(function(b){ok({b:b,ext:f==='jpg'?'jpg':'png',type:ty})},ty,.93)})})}
+  if(f==='pdf'){var J=window.jspdf&&window.jspdf.jsPDF;if(!J)throw Error('jsPDF unavailable');var d=new J({unit:'mm',format:[r.w,r.h],orientation:r.w>r.h?'l':'p'});d.addImage(cv.toDataURL('image/jpeg',.92),'JPEG',0,0,r.w,r.h);return{b:d.output('blob'),ext:'pdf',type:'application/pdf'}}
+  var ty=f==='jpg'?'image/jpeg':'image/png';return new Promise(function(ok,no){cv.toBlob(function(b){if(!b){no(Error('Canvas export failed'));return}ok({b:b,ext:f==='jpg'?'jpg':'png',type:ty})},ty,.93)})})}
 var SC=null;
 function ckey(){return [$('n').value,$('n2').value,JSON.stringify(S),JSON.stringify(OV),cBgU,portU].join('|')}
-function prep(){var k=ckey();if(SC&&SC.k===k)return SC.p;var o={k:k,r:null};o.p=blob().then(function(r){o.r=r;return r});SC=o;return o.p}
-function dlr(r){var a=document.createElement('a');a.href=URL.createObjectURL(r.b);a.download='name-egypt'+(S.wm?'-preview':'')+'.'+r.ext;document.body.appendChild(a);a.click();a.remove()}
+function prep(){var k=ckey();if(SC&&SC.k===k)return SC.p;var o={k:k,r:null};o.p=blob().then(function(r){o.r=r;$('pms').textContent=$('is').textContent='';return r},function(e){if(SC===o)SC=null;throw e});SC=o;return o.p}
+function saveBlob(b,name){var u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1000)}
+function dlr(r){saveBlob(r.b,'name-egypt'+(S.wm?'-preview':'')+'.'+r.ext)}
+function exportError(){$('pms').textContent=$('is').textContent=L().er2}
 function shr(r){var fn='name-egypt'+(S.wm?'-preview':'')+'.'+r.ext,f=new File([r.b],fn,{type:r.type}),txt=all.map(function(w){return w.h.join('')}).join('  ')+'\n'+BR;
  if(navigator.canShare&&navigator.canShare({files:[f]}))return navigator.share({files:[f],text:txt}).catch(function(e){if(e&&e.name!=='AbortError')dlr(r)});
  dlr(r);$('pms').textContent=$('is').textContent=L().dlfb}
-$('dl').onclick=function(){prep().then(dlr).catch(function(){})};
-$('sh').onclick=function(){if(!words.length)return;var k=ckey();if(SC&&SC.k===k&&SC.r){shr(SC.r);return}prep().then(shr).catch(function(){})};
+$('dl').onclick=function(){prep().then(dlr).catch(exportError)};
+$('sh').onclick=function(){if(!words.length)return;var k=ckey();if(SC&&SC.k===k&&SC.r){shr(SC.r);return}prep().then(shr).catch(exportError)};
 ['fm','sz','sy','bd'].forEach(function(id){$(id).onchange=function(){S[{fm:'f',sz:'z',sy:'y',bd:'bd'}[id]]=this.value;if(id==='sz'){$('cs').hidden=this.value!=='cus';szHint();if(!$('pm').hidden)pvGo()}if(id==='sz'&&S.sl===undefined)$('sl').checked=['pl','bc','bn','plh'].indexOf(this.value)>=0;save();if(id==='bd'||id==='sy')draw();if(!$('pm').hidden)pvGo()}});
 $('cw').oninput=function(){var v=parseInt(this.value,10);if(v>=200&&v<=4000){S.cw=v;save();szHint();if(!$('pm').hidden)pvGo()}};
 $('ch').oninput=function(){var v=parseInt(this.value,10);if(v>=200&&v<=4000){S.ch=v;save();szHint();if(!$('pm').hidden)pvGo()}};
-$('cw').onchange=function(){this.value=clampN(this.value,769);szHint()};$('ch').onchange=function(){this.value=clampN(this.value,1280);szHint()};
+$('cw').onchange=function(){S.cw=this.value=clampN(this.value,769);save();szHint();if(!$('pm').hidden)pvGo()};$('ch').onchange=function(){S.ch=this.value=clampN(this.value,1280);save();szHint();if(!$('pm').hidden)pvGo()};
 $('sl').onchange=function(){S.sl=this.checked?1:0;save();if(!$('pm').hidden)pvGo()};
 $('qr').onchange=function(){S.qr=this.checked?1:0;save();if(!$('pm').hidden)pvGo()};
 $('wm').onchange=function(){S.wm=this.checked?1:0;save();if(!$('pm').hidden)pvGo()};
 $('du').onchange=function(){S.dual=this.checked?1:0;$('n2').hidden=!S.dual;save();draw();if(!$('pm').hidden)pvGo()};$('n2').addEventListener('input',function(){draw();if(!$('pm').hidden)pvGo()});
 $('rs').onclick=function(){S=DF();OV={};$('pc').checked=false;try{localStorage.removeItem('noe')}catch(e){}ui();if(!$('pm').hidden)pvGo()};
 $('zp').onclick=function(){var Z=window.JSZip;if(!Z||!words.length)return;var zb=$('zp'),keep=S.z,ids=['sq','c57','a4','plh'],zip=new Z(),i=0;zb.disabled=true;
- (function nx(){if(i>=ids.length){S.z=keep;zip.generateAsync({type:'blob'}).then(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='name-egypt-pack'+(S.wm?'-preview':'')+'.zip';document.body.appendChild(a);a.click();a.remove();zb.disabled=false});return}
-  S.z=ids[i];blob().then(function(r){zip.file('name-egypt-'+ids[i]+(S.wm?'-preview':'')+'.'+r.ext,r.b);i++;nx()})})()};
+  function nx(){if(i>=ids.length)return zip.generateAsync({type:'blob'}).then(function(b){saveBlob(b,'name-egypt-pack'+(S.wm?'-preview':'')+'.zip')});S.z=ids[i];return blob().then(function(r){zip.file('name-egypt-'+ids[i]+(S.wm?'-preview':'')+'.'+r.ext,r.b);i++;return nx()})}
+  nx().then(function(){S.z=keep;zb.disabled=false},function(){S.z=keep;zb.disabled=false;exportError()})};
 var SR=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null;
 $('mic').onclick=function(){var t=L(),st=$('vs'),mic=$('mic');
  if(!SR){st.textContent=t.ns;return}
@@ -412,13 +413,13 @@ $('n').addEventListener('input',draw);
 $('lg').onclick=function(){S.l=S.l==='ar'?'en':'ar';save();ui()};
 document.querySelectorAll('input[name=d]').forEach(function(r){r.onchange=function(){S.d=r.value;save();ui()}});
 $('cart').onchange=function(){S.cart=this.checked?1:0;save();draw()};
-$('dc').onchange=function(){S.dc=this.checked?1:0;save();draw()};$('bg').onchange=function(){S.bg=this.value;save();cBg=null;document.querySelector('main').dataset.bg=S.bg;if(!$('pm').hidden)pvGo()};
+$('dc').onchange=function(){S.dc=this.checked?1:0;save();draw()};$('bg').onchange=function(){S.bg=this.value;save();cBg=null;if(cBgU)URL.revokeObjectURL(cBgU);cBgU='';document.querySelector('main').dataset.bg=S.bg;if(!$('pm').hidden)pvGo()};
 $('mir').onchange=function(){S.mir=this.checked?1:0;save();draw()};
 function pcOk(){return $('pc').checked}
-function clearImgs(){cBg=null;port=null;portU='';$('bf').value='';$('pf').value='';document.querySelector('main').dataset.bg=S.bg||'p';draw();if(!$('pm').hidden)pvGo()}
+function clearImgs(){cBg=null;port=null;if(cBgU)URL.revokeObjectURL(cBgU);if(portU)URL.revokeObjectURL(portU);cBgU=portU='';$('bf').value='';$('pf').value='';document.querySelector('main').dataset.bg=S.bg||'p';draw();if(!$('pm').hidden)pvGo()}
 function imgGate(){var ok=pcOk();$('bf').disabled=!ok;$('pf').disabled=!ok;if(!ok&&(cBg||port))clearImgs()}
 $('pc').onchange=imgGate;
-function loadImg(f,cb){var st=$('is'),t=L();if(!f||!pcOk())return;if(f.size>8*1048576){st.textContent=t.big;return}var u=URL.createObjectURL(f),im=new Image();im.onload=function(){st.textContent='';cb(im,u);draw()};im.onerror=function(){st.textContent=t.bad};im.src=u}
+function loadImg(f,cb){var st=$('is'),t=L();if(!f||!pcOk())return;if(f.size>8*1048576){st.textContent=t.big;return}var u=URL.createObjectURL(f),im=new Image();im.onload=function(){st.textContent='';cb(im,u);draw()};im.onerror=function(){URL.revokeObjectURL(u);st.textContent=t.bad};im.src=u}
 $('bf').onchange=function(){loadImg(this.files[0],function(im,u){if(cBgU)URL.revokeObjectURL(cBgU);cBg=im;cBgU=u;var m=document.querySelector('main');m.style.setProperty('--cbg','url("'+u+'")');m.dataset.bg='x';if(!$('pm').hidden)pvGo()})};
 $('pf').onchange=function(){loadImg(this.files[0],function(im,u){if(portU)URL.revokeObjectURL(portU);port=im;portU=u;if(!$('pm').hidden)pvGo()})};
 $('bc').onclick=clearImgs;
